@@ -8,7 +8,7 @@ open class Held(val name: String, var hp: Int) {
     fun useAction(target: Held) {
         if (actions.isNotEmpty()) {
             val action = actions[0]
-            action.execute(target)
+            //action.execute(target)
             actions.removeAt(0)
         }
     }
