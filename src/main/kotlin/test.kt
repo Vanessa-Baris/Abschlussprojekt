@@ -6,13 +6,13 @@ fun main() {
     println("Wähle nun deine Gestalt. Es stehen drei zur Auswahl:")
 
     val oreade = Oreade("Echo", 50)
-    println("Die Oreade ${oreade.name} hat ${oreade.hp} verfügbare Leben, dafür sind ihre Attacken umso stärker.")
+    println("Die Oreade ${oreade.name} hat ${oreade.hp1} verfügbare Leben, dafür sind ihre Attacken umso stärker.")
 
     val vampir = Vampir("Barnabas", 70)
-    println("Der Vampir ${vampir.name} hat ${vampir.hp} verfügbare Leben, doch lass dir gesagt sein, der stärkste ist er nicht.")
+    println("Der Vampir ${vampir.name} hat ${vampir.hp2} verfügbare Leben, doch lass dir gesagt sein, der stärkste ist er nicht.")
 
     val zombie = Zombie("Olivia", 60)
-    println("Der Zombie ${zombie.name} hat ${zombie.hp} verfügbare Leben, dafür ist sie aber nicht die mutigste.")
+    println("Der Zombie ${zombie.name} hat ${zombie.hp3} verfügbare Leben, dafür ist sie aber nicht die mutigste.")
 
     println("Such dir nun aus, welchen der drei du bespielen möchtest. Die flinke Echo? Den blutsaugenden Barnabas? Oder doch lieber die vergammelten Olivia?")
 
@@ -27,6 +27,6 @@ fun main() {
             return
         }
     }
-    println("Du hast ${character.name} als deine Gestalt gewählt. Viel Erfolg im Abenteuer!")
+    println("Du hast ${character.name} als deine Gestalt gewählt. Viel Spaß im Kampf!")
 }
 

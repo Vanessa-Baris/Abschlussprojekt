@@ -15,7 +15,7 @@ open class Held(val name: String, var hp: Int) {
         }
     }
 
-    //Von Chat GPT Anregung geholt und auf meine Bedürfnisse umgewandelt:
+    //Von Chat GPT Anregung geholt und auf meine Bedürfnisse umgewandelt, da ich nicht wusste, wie ich blocken soll:
     var isBlocked: Boolean = false
 
     fun useAction(target: Held) {
