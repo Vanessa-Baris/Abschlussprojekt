@@ -1,2 +1,0 @@
-class `Gegner(Magier+Golem)` {
-}
