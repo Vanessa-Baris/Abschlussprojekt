@@ -1,4 +1,5 @@
 class Zombie(val name3: String , var hp3: Int): Held(name3 , hp3) {
+    var zombie = Zombie("Olivia" , 60)
     init {
         addAction(push(30..33 , Gegner()))
         addAction(hunt(40..50 , Gegner()))
