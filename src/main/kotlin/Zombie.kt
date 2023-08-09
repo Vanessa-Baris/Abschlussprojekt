@@ -11,25 +11,30 @@ class Zombie(val name3: String , var hp3: Int): Held(name3 , hp3) {
         //anpassen und klassen für jede attacke
         var push = Push()
         var target.hp -= push.damage
-        //var round noch einfügen
+        push.pushUseAbility(target)
         println("$name3 schlägt ${target.name} und verursacht $damage Schaden.")
     }
 
     private fun hunt(damage: IntRange, target: Gegner) {
         var hunt = Hunt()
             var target.hp -= hunt.damage
+        hunt.huntUseAbility(target)
         println("$name3 jagt ${target.name} hinterher und verursacht $damage Schaden.")
     }
 
     private fun nibble(damage: IntRange, target: Gegner) {
         var nibble = Nibble()
         var target.hp -= nibble.damage
+        nibble.nibbleUseAbility(target)
         println("$name3 knabbert ${target.name} mit großen Genuss an und verursacht $damage Schaden.")
     }
 
     private fun staggeringAway(damage: Int , target: Gegner) {
+        var staggeringAway = StaggeringAway()
+        var target.hp -= staggeringAway.damage
+        staggeringAway.staggeringUseAbility(target)
         println("$name3 wird das alles zu viel. $name3 torkelt weg um zu fliehen und setzt eine Runde aus.")
-    } //brauche ich hier eine Klasse wegen berechnen?
+    }
 
     private fun addAction(action: Unit) {}
 

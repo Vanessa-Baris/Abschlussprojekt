@@ -1,9 +1,9 @@
-class Nibble() {
-    var nibble = (20..30).random()
-    var damage = 20..30
+class StaggeringAway {
+    var staggeringAway = (70..75).random()
+    var damage = 70..75
     var used: Boolean = false
 
-    fun nibbleUseAbility(target: Gegner) {
+    fun staggeringUseAbility(target: Gegner) {
         if (used) {
             target.hp -= damage
             println("Blossom Magic: Es richtet $damage Schaden an.")
@@ -15,4 +15,5 @@ class Nibble() {
 
     fun resetAbility() {
         used = false
-    }}
+    }
+}

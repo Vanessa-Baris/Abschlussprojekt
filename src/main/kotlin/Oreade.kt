@@ -17,6 +17,7 @@ class Oreade(val name1: String , var hp1: Int): Held(name1, hp1){
 
     private fun clairvoyance(damage: Int , target: Gegner){
         var clairvoyance = Clairvoyance()
+        var clairvoyance = Clairvoyance()
         var target. hp -= clairvoyance.damage
         clairvoyance.clairUseAbility(target)
         println("$name1 verwendet Hellsicht und blockt die nächste Aktion von ${target.name}")
