@@ -1,5 +1,22 @@
 class Oreade(val name1: String , var hp1: Int): Held(name1, hp1){
 
+    override fun attack(target: EinheitHeld){
+        println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-3 ein.")
+        var attackChoice = readln().toIntOrNull()
+
+        when (attackChoice) {
+            1 -> {
+            }
+            2 -> {
+            }
+            3 -> {
+            }
+            else -> {
+                println("Ungültige Auswahl.")
+            }
+        }
+    }
+
     var oreade = Oreade("Echo" , 50)
     init {
         addAction(blossomMagic(70..75 , Gegner()))

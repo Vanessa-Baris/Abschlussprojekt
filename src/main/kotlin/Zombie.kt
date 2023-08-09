@@ -1,4 +1,22 @@
 class Zombie(val name3: String , var hp3: Int): Held(name3 , hp3) {
+
+    override fun attack(target: EinheitHeld){
+        println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-3 ein.")
+        var attackChoice = readln().toIntOrNull()
+
+        when (attackChoice) {
+            1 -> {
+            }
+            2 -> {
+            }
+            3 -> {
+            }
+            else -> {
+                println("Ungültige Auswahl.")
+            }
+        }
+    }
+
     var zombie = Zombie("Olivia" , 60)
     init {
         addAction(push(30..33 , Gegner()))
@@ -8,7 +26,6 @@ class Zombie(val name3: String , var hp3: Int): Held(name3 , hp3) {
     }
 
     private fun push(damage: IntRange, target: Gegner) {
-        //anpassen und klassen für jede attacke
         var push = Push()
         var target.hp -= push.damage
         push.pushUseAbility(target)

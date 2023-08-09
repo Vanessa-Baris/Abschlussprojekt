@@ -5,10 +5,10 @@ class Push() {
     fun pushUseAbility(target: Gegner) {
         if (used) {
             target.hp -= damage
-            println("Blossom Magic: Es richtet $damage Schaden an.")
+            println("Push: Es richtet $damage Schaden an.")
             used = true
         } else {
-            println("Blossom Magic wurde bereits in dieser Runde verwendet!")
+            println("Push wurde bereits in dieser Runde verwendet!")
         }
     }
 

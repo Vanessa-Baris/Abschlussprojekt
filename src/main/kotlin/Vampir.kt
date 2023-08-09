@@ -1,4 +1,22 @@
 class Vampir(var name2: String , hp2: Int): Held(name2 , hp2) {
+
+    override fun attack(target: EinheitHeld){
+        println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-3 ein.")
+        var attackChoice = readln().toIntOrNull()
+
+        when (attackChoice) {
+            1 -> {
+            }
+            2 -> {
+            }
+            3 -> {
+            }
+            else -> {
+                println("Ungültige Auswahl.")
+            }
+        }
+    }
+
     var vampir = Vampir("Barnabas" , 70)
     init{
         addAction(bite(44..50 , Gegner()))

@@ -6,10 +6,10 @@ class Bite() {
     fun biteUseAbility(target: Gegner) {
         if (used) {
             target.hp -= damage
-            println("Blossom Magic: Es richtet $damage Schaden an.")
+            println("Bite: Es richtet $damage Schaden an.")
             used = true
         } else {
-            println("Blossom Magic wurde bereits in dieser Runde verwendet!")
+            println("Bite wurde bereits in dieser Runde verwendet!")
         }
     }
 

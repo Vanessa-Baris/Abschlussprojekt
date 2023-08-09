@@ -6,10 +6,10 @@ class Manipulation() {
     fun manipulationUseAbility(target: Gegner) {
         if (used) {
             target.hp -= damage
-            println("Blossom Magic: Es richtet $damage Schaden an.")
+            println("Manipulation: Es richtet $damage Schaden an.")
             used = true
         } else {
-            println("Blossom Magic wurde bereits in dieser Runde verwendet!")
+            println("Manipulation wurde bereits in dieser Runde verwendet!")
         }
     }
 

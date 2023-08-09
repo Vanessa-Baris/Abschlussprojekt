@@ -6,10 +6,10 @@ class Scratch() {
     fun scratchUseAbility(target: Gegner) {
         if (used) {
             target.hp -= damage
-            println("Blossom Magic: Es richtet $damage Schaden an.")
+            println("Scratch: Es richtet $damage Schaden an.")
             used = true
         } else {
-            println("Blossom Magic wurde bereits in dieser Runde verwendet!")
+            println("Scratch wurde bereits in dieser Runde verwendet!")
         }
     }
 
