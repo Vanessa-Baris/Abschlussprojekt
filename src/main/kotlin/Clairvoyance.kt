@@ -21,5 +21,3 @@ class Clairvoyance() {
 
 
 
-{
-}
