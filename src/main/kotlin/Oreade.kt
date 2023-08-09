@@ -1,6 +1,6 @@
 class Oreade(val name1: String , var hp1: Int): Held(name1, hp1){
 
-    override fun attack(target: EinheitHeld){
+    override fun attack(target: Gegner) {
         println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-3 ein.")
         var attackChoice = readln().toIntOrNull()
 

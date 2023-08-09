@@ -1,6 +1,6 @@
 class Vampir(var name2: String , hp2: Int): Held(name2 , hp2) {
 
-    override fun attack(target: EinheitHeld){
+    override fun attack(target: Gegner) {
         println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-3 ein.")
         var attackChoice = readln().toIntOrNull()
 

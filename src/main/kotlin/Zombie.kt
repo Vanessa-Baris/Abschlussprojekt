@@ -1,6 +1,6 @@
 class Zombie(val name3: String , var hp3: Int): Held(name3 , hp3) {
 
-    override fun attack(target: EinheitHeld){
+    override fun attack(target: Gegner) {
         println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-3 ein.")
         var attackChoice = readln().toIntOrNull()
 
