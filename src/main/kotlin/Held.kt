@@ -29,5 +29,6 @@ open class Held(val name: String, var hp: Int) {
             }
             actions.removeAt(0)
         }
+    }
 }
 

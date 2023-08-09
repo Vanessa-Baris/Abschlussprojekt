@@ -9,13 +9,17 @@ class Oreade(val name1: String , var hp1: Int): Held(name1, hp1){
     private fun blossomMagic (damage: IntRange, target: Gegner) {
         var blossomMagic = BlossomMagic()
         var target.hp -= blossomMagic.damage
+        blossomMagic.useAbility(target)
         println("$name1 wirft mit Blüten um sich herum und trifft ${target.name}. Es richtet $damage Schaden an.")
     }
 
     private fun clairvoyance(damage: Int , target: Gegner){
+        var clairvoyance = Clairvoyance()
+        var target. hp -= clairvoyance.damage
+        clairvoyance.clairUseAbility(target)
         println("$name1 verwendet Hellsicht und blockt die nächste Aktion von ${target.name}")
         isBlocked = true
-    } //brauche ich hier eine Klasse wegen berechnen?
+    }
 
     private fun darkThorns(damage: IntRange, target: Gegner){
         var darkThorns = DarkThorns()
@@ -28,6 +32,13 @@ class Oreade(val name1: String , var hp1: Int): Held(name1, hp1){
         var target.hp -= treeTrunkLongThrow.damage
         println("$name1 wirft einen Baumstamm und trifft ${target.name}. Es verursacht $damage Schaden.")
     }
+
+    var target = Gegner("Gegner", 200)
+
+    var name1 = "Echo"
+    var hp1 = 50
+
+
 
     private fun addAction(action: Unit) {}
 
