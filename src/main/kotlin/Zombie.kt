@@ -6,6 +6,7 @@ class Zombie(val name3: String, var hp3: Int): Held(name3 , hp3) {
     var nibbleUsed = false
     var staggeringAwayUsed = false
 
+
     fun attack(target: Gegner) {
         println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-3 ein.")
         var attackChoice = readln().toIntOrNull()

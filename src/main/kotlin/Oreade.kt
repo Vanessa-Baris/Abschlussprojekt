@@ -6,6 +6,7 @@ class Oreade(val name1: String , var hp1: Int): Held(name1, hp1){
     var darkThornsUsed = false
     var treeTrunkLongThrowUsed = false
 
+
      fun attack(target: Gegner) {
         println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-3 ein.")
         var attackChoice = readln().toIntOrNull()

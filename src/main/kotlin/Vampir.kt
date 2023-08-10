@@ -26,6 +26,7 @@ class Vampir(var name2: String , hp2: Int): Held(name2 , hp2) {
         addAction(scratch(20..35, Gegner()))
     }
 
+
     private fun bite(damage: IntRange, target: Gegner) {
         target.hp -= damage.random()
         biteUsed = true
