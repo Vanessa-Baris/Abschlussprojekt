@@ -13,6 +13,7 @@ class Oreade(val name1: String , var hp1: Int): Held(name1, hp1){
                 println("Ungültige Auswahl.")
             }
         }
+        useAction1(target)
     }
 
     var oreade = Oreade("Echo" , 50)
@@ -36,6 +37,7 @@ class Oreade(val name1: String , var hp1: Int): Held(name1, hp1){
         clairvoyance.clairUseAbility(target)
         println("$name1 verwendet Hellsicht und blockt die nächste Aktion von ${target.name}")
         isBlocked = true
+        useAction(target)
     }
 
     private fun darkThorns(damage: IntRange, target: Gegner){

@@ -13,6 +13,7 @@ class Zombie(val name3: String , var hp3: Int): Held(name3 , hp3) {
                 println("Ungültige Auswahl.")
             }
         }
+        useAction1(target)
     }
 
     var zombie = Zombie("Olivia" , 60)

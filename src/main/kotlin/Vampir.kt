@@ -13,6 +13,7 @@ class Vampir(var name2: String , hp2: Int): Held(name2 , hp2) {
                 println("Ungültige Auswahl.")
             }
         }
+        useAction1(target)
     }
 
     var vampir = Vampir("Barnabas", 70)

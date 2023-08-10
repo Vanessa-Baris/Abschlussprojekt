@@ -5,7 +5,7 @@ abstract class Held(override val name: String, override var hp: Int) : EinheitHe
         actions.add(action)
     }
 
-    open fun useAction(target: Gegner) {
+    open fun useAction1(target: Gegner) {
         if (actions.isNotEmpty()) {
             val action = actions[0]
             action.execute(target)
@@ -14,6 +14,7 @@ abstract class Held(override val name: String, override var hp: Int) : EinheitHe
             println("$name hat keine Attacken mehr.")
         }
     }
+}
 
     //Von Chat GPT Anregung geholt und auf meine Bedürfnisse umgewandelt, da ich nicht wusste, wie ich blocken soll:
 
