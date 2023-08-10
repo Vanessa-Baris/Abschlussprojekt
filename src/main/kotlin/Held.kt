@@ -1,36 +1,53 @@
-open class Held(override val name: String, override var hp: Int) : EinheitHeld() { val actions = mutableListOf<Action>()
-    //Liste weg, nur ein Boolean
+open class Held( val name: String,  var hp: Int)  {
 
-    open fun addAction(action: Unit) {
-        actions.add(action)
+    private var hasActedThisRound: Boolean = false
+
+    fun resetRound(): Boolean {
+        hasActedThisRound = false
+        return true
     }
 
-    //Hier nur ein Boolean,
-    open fun useAction1(target: Gegner) {
-        if (actions.isNotEmpty()) {
-            val action = actions[0]
-            action.execute(target)
-            actions.removeAt(0)
+    fun canActThisRound(): Boolean {
+        return hasActedThisRound
+    }
+
+    fun markAsActedThisRound(): Boolean {
+        hasActedThisRound = true
+        return true
+    }
+
+    fun performAction(target: Gegner) {
+        if (canActThisRound()) {
+            println("$name kämpft gegen ${target.name}.")
+            markAsActedThisRound()
         } else {
-            println("$name hat keine Attacken mehr.")
-        }
-    }
-
-    //Von Chat GPT Anregung geholt und auf meine Bedürfnisse umgewandelt, da ich nicht wusste, wie ich blocken soll:
-
-var isBlocked: Boolean = false
-
-    fun useAction(target: Gegner) {
-        if (actions.isNotEmpty()) {
-            val action = actions[0]
-            if (isBlocked) {
-                println("$name ist geschützt und blockt die nächste Aktion.")
-                isBlocked = false
-            } else {
-                action.execute(target)
-            }
-            actions.removeAt(0)
+            println("$name hat bereits in dieser Runde gekämpft.")
         }
     }
 }
+
+    //Von Chat GPT Anregung geholt und auf meine Bedürfnisse umgewandelt, da ich nicht wusste, wie ich blocken soll:
+    private val actions: MutableList<(Gegner) -> Unit> = mutableListOf()
+
+    var isBlocked: Boolean = false
+
+    fun addAction(action: (Gegner) -> Unit) {
+        actions.add(action)
+}
+
+    fun useAction(target: Gegner) {
+        if (actions.isNotEmpty()) {
+        val action = actions[0]
+        if (isBlocked) {
+            println("Echo ist geschützt und blockt die nächste Aktion.")
+            isBlocked = false
+        } else {
+            action(target)
+        }
+        actions.removeAt(0)
+    }
+}
+
+
+
 
