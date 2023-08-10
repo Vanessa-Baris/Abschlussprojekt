@@ -1,7 +1,7 @@
-class Magier(override var name: String, override var hp: Int): Gegner(name , hp){
+class Magier( var name: String,  var hp: Int): Gegner(name , hp){
 
-    override var name = "Jack"
-    override var hp: Int = 200
+     var name = "Jack"
+     var hp: Int = 200
 
     init {
         addAction2()

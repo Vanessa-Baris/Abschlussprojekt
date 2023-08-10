@@ -1,10 +1,11 @@
-abstract class Held(override val name: String, override var hp: Int) : EinheitHeld() {
-    val actions = mutableListOf<Action>()
+open class Held(override val name: String, override var hp: Int) : EinheitHeld() { val actions = mutableListOf<Action>()
+    //Liste weg, nur ein Boolean
 
     open fun addAction(action: Unit) {
         actions.add(action)
     }
 
+    //Hier nur ein Boolean,
     open fun useAction1(target: Gegner) {
         if (actions.isNotEmpty()) {
             val action = actions[0]
@@ -14,14 +15,10 @@ abstract class Held(override val name: String, override var hp: Int) : EinheitHe
             println("$name hat keine Attacken mehr.")
         }
     }
-}
 
     //Von Chat GPT Anregung geholt und auf meine Bedürfnisse umgewandelt, da ich nicht wusste, wie ich blocken soll:
 
 var isBlocked: Boolean = false
-
-
-//Was ist hier der Fehler?
 
     fun useAction(target: Gegner) {
         if (actions.isNotEmpty()) {

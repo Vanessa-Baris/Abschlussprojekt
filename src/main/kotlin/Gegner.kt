@@ -1,5 +1,4 @@
-open class Gegner(override var name: String, override var hp: Int): EinheitGegner(name , hp) {
-    val actions = mutableListOf<Action>()
+open class Gegner( var name: String,  var hp: Int) {
 
     open fun addAction2(action: Unit) {
         actions.add(action)
@@ -17,7 +16,3 @@ open class Gegner(override var name: String, override var hp: Int): EinheitGegne
     }
 }
 
-//Warum will er das?
-fun <E> MutableList<E>.add(element: Unit) {
-
-}

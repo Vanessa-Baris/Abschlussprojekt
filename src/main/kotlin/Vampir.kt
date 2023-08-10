@@ -1,6 +1,9 @@
 class Vampir(var name2: String , hp2: Int): Held(name2 , hp2) {
     //welche Klasse?
-
+    var camoUsed = false
+    var biteUsed = false
+    var manipulationUsed = false
+    var scratchUsed = false
     override fun attack(target: Gegner) {
         println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-3 ein.")
         var attackChoice = readln().toIntOrNull()
@@ -16,9 +19,6 @@ class Vampir(var name2: String , hp2: Int): Held(name2 , hp2) {
         }
         useAction1(target)
     }
-
-    var vampir = Vampir("Barnabas", 70)
-
     init {
         addAction(bite(44..50, Gegner()))
         addAction(camoCape(5..10, Gegner()))
@@ -27,30 +27,27 @@ class Vampir(var name2: String , hp2: Int): Held(name2 , hp2) {
     }
 
     private fun bite(damage: IntRange, target: Gegner) {
-        var bite = Bite()
-        target.hp -= bite.damage.random()
-        bite.biteUseAbility(target)
+        target.hp -= damage.random()
+        biteUsed = true
         println("$name2 beißt ${target.name} in den Hals und verursacht $damage Schaden.")
     }
 
     private fun camoCape(damage: IntRange, target: Gegner) {
-        var camoCape = CamoCape()
-        target.hp -= camoCape.damage.random()
-        camoCape.camoUseAbility(target)
+        target.hp -= damage.random()
+        camoUsed = true
+        //println("Camo Cape: Es richtet $damage Schaden an.") Was ist besser? Das oder das:
         println("$name2 wirft sich den Tarnumhang über und zwickt ${target.name}. Dabei entsteht $damage Schaden.")
     }
 
     private fun manipulation(damage: IntRange, target: Gegner) {
-        var manipulation = Manipulation()
-        target.hp -= manipulation.damage.random()
-        manipulation.manipulationUseAbility(target)
+        target.hp -= damage.random()
+        manipulationUsed = true
         println("$name2 manipuliert ${target.name} und verursacht $damage Schaden.")
     }
 
     private fun scratch(damage: IntRange, target: Gegner) {
-        var scratch = Scratch()
-        target.hp -= scratch.damage.random()
-        scratch.scratchUseAbility(target)
+        target.hp -= damage.random()
+        scratchUsed = true
         println("$name2 kratzt ${target.name} und verursacht $damage Schaden.")
     }
 }
