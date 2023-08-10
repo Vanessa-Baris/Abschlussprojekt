@@ -1,4 +1,5 @@
-class Zombie(val name3: String , var hp3: Int): Held(name3 , hp3) {
+class Zombie(val name3: String, var hp3: Int): Held(name3 , hp3) {
+    //Was mache ich da? Implement oder abstract?
 
     override fun attack(target: Gegner) {
         println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-3 ein.")
@@ -26,32 +27,32 @@ class Zombie(val name3: String , var hp3: Int): Held(name3 , hp3) {
 
     private fun push(damage: IntRange, target: Gegner) {
         var push = Push()
-        var target.hp -= push.damage
+        target.hp -= push.damage.random()
         push.pushUseAbility(target)
         println("$name3 schlägt ${target.name} und verursacht $damage Schaden.")
     }
 
     private fun hunt(damage: IntRange, target: Gegner) {
         var hunt = Hunt()
-            var target.hp -= hunt.damage
+        target.hp = target.hp - hunt.damage.random()
         hunt.huntUseAbility(target)
         println("$name3 jagt ${target.name} hinterher und verursacht $damage Schaden.")
     }
 
     private fun nibble(damage: IntRange, target: Gegner) {
         var nibble = Nibble()
-        var target.hp -= nibble.damage
+        target.hp -= nibble.damage.random()
         nibble.nibbleUseAbility(target)
         println("$name3 knabbert ${target.name} mit großen Genuss an und verursacht $damage Schaden.")
     }
 
     private fun staggeringAway(damage: Int , target: Gegner) {
         var staggeringAway = StaggeringAway()
-        var target.hp -= staggeringAway.damage
+        target.hp -= staggeringAway.damage.random()
         staggeringAway.staggeringUseAbility(target)
         println("$name3 wird das alles zu viel. $name3 torkelt weg um zu fliehen und setzt eine Runde aus.")
     }
 
-    private fun addAction(action: Unit) {}
+    override fun addAction(action: Unit) {}
 
 }

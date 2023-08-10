@@ -5,7 +5,7 @@ class Scratch() {
 
     fun scratchUseAbility(target: Gegner) {
         if (used) {
-            target.hp -= damage
+            target.hp -= damage.random()
             println("$scratch: Es richtet $damage Schaden an.")
             used = true
         } else {

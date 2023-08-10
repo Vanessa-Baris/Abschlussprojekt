@@ -5,7 +5,7 @@ class BlossomMagic() {
 
     fun useAbility(target: Gegner) {
         if (used) {
-            target.hp -= damage
+            target.hp -= damage.random()
             println("$blossomMagic: Es richtet $damage Schaden an.")
             used = true
         } else {

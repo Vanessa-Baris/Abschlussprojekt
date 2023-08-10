@@ -5,7 +5,7 @@ class DarkThorns() {
 
     fun darkUseAbility(target: Gegner) {
         if (used) {
-            target.hp -= damage
+            target.hp -= damage.random()
             println("$darkThorns: Es richtet $damage Schaden an.")
             used = true
         } else {

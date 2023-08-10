@@ -4,7 +4,7 @@ class Magier(override var name: String, override var hp: Int): Gegner(name , hp)
     override var hp: Int = 200
 
     init {
-        addAction2(chemicalBurn(20 , )
+        addAction2()
         addAction2()
         addAction2()
         addAction2()

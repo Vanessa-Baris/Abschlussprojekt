@@ -5,7 +5,7 @@ class CamoCape() {
 
     fun camoUseAbility(target: Gegner) {
         if (used) {
-            target.hp -= damage
+            target.hp -= damage.random()
             println("$camoCape: Es richtet $damage Schaden an.")
             used = true
         } else {

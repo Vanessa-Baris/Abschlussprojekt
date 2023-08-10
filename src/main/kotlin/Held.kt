@@ -18,7 +18,10 @@ abstract class Held(override val name: String, override var hp: Int) : EinheitHe
 
     //Von Chat GPT Anregung geholt und auf meine Bedürfnisse umgewandelt, da ich nicht wusste, wie ich blocken soll:
 
-    var isBlocked: Boolean = false
+var isBlocked: Boolean = false
+
+
+//Was ist hier der Fehler?
 
     fun useAction(target: Gegner) {
         if (actions.isNotEmpty()) {

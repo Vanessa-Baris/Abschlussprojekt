@@ -5,7 +5,7 @@ class Manipulation() {
 
     fun manipulationUseAbility(target: Gegner) {
         if (used) {
-            target.hp -= damage
+            target.hp -= damage.random()
             println("$manipulation: Es richtet $damage Schaden an.")
             used = true
         } else {

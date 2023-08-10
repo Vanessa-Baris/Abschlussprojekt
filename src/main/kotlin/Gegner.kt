@@ -1,4 +1,4 @@
-open class Gegner(override var name: String, override var hp: Int): EinheitGegner() {
+open class Gegner(override var name: String, override var hp: Int): EinheitGegner(name , hp) {
     val actions = mutableListOf<Action>()
 
     open fun addAction2(action: Unit) {
@@ -9,14 +9,15 @@ open class Gegner(override var name: String, override var hp: Int): EinheitGegne
         if (actions.isNotEmpty()) {
             val action = actions[0]
             action.execute(target)
+            //Was will er bei target?
             actions.removeAt(0)
         } else {
             println("$name hat keine Attacken mehr.")
         }
     }
 }
-    var magier = Magier
-    var golem = Golem
-    var hp = Int
-    var name = String
+
+//Warum will er das?
+fun <E> MutableList<E>.add(element: Unit) {
+
 }

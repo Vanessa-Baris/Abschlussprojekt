@@ -5,7 +5,7 @@ class Hunt() {
 
     fun huntUseAbility(target: Gegner) {
         if (used) {
-            target.hp -= damage
+            target.hp -= damage.random()
             println("$hunt: Es richtet $damage Schaden an.")
             used = true
         } else {

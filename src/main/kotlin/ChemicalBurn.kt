@@ -1,12 +1,12 @@
-class Bite() {
-    var bite = (44..50).random()
-    var damage = 44..50
+class ChemicalBurn {
+    var chemicalBurn = 20
+    var damage = 20
     var used: Boolean = false
 
-    fun biteUseAbility(target: Gegner) {
+    fun burnUseAbility(target: Gegner) {
         if (used) {
-            target.hp -= damage.random()
-            println("$bite: Es richtet $damage Schaden an.")
+            target.hp -= damage
+            println("$chemicalBurn: Es richtet $damage Schaden an.")
             used = true
         } else {
             println("Bite wurde bereits in dieser Runde verwendet!")

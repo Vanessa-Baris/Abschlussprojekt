@@ -5,7 +5,7 @@ class Push() {
 
     fun pushUseAbility(target: Gegner) {
         if (used) {
-            target.hp -= damage
+            target.hp -= damage.random()
             println("$hunt: Es richtet $damage Schaden an.")
             used = true
         } else {

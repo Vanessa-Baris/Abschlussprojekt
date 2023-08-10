@@ -5,7 +5,7 @@ class Nibble() {
 
     fun nibbleUseAbility(target: Gegner) {
         if (used) {
-            target.hp -= damage
+            target.hp -= damage.random()
             println("$nibble: Es richtet $damage Schaden an.")
             used = true
         } else {
