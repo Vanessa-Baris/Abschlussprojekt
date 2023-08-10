@@ -15,4 +15,8 @@ open class Gegner(override var name: String, override var hp: Int): EinheitGegne
         }
     }
 }
+    var magier = Magier
+    var golem = Golem
+    var hp = Int
+    var name = String
 }

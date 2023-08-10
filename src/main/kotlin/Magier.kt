@@ -1,4 +1,8 @@
-class Magier(val nameM: String , val hpM: Int): Gegner(nameM , hpM){
+class Magier(override var name: String, override var hp: Int): Gegner(name , hp){
+
+    override var name = "Jack"
+    override var hp: Int = 200
+
     init {
         addAction2(chemicalBurn(20 , )
         addAction2()
