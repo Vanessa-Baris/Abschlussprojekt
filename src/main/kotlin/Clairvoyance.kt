@@ -6,7 +6,7 @@ class Clairvoyance() {
     fun clairUseAbility(target: Gegner) {
         if (used) {
             target.hp -= damage
-            println("Clairvoyance: Es richtet $damage Schaden an.")
+            println("$clairvoyance: Es richtet $damage Schaden an.")
             used = true
         } else {
             println("Clairvoyance wurde bereits in dieser Runde verwendet!")

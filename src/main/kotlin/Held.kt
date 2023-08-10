@@ -1,7 +1,7 @@
-open class Held(val name: String, var hp: Int) : EinheitHeld() {
+abstract class Held(override val name: String, override var hp: Int) : EinheitHeld() {
     val actions = mutableListOf<Action>()
 
-    open fun addAction(action: Action) {
+    open fun addAction(action: Unit) {
         actions.add(action)
     }
 

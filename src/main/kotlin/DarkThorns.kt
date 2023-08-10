@@ -6,7 +6,7 @@ class DarkThorns() {
     fun darkUseAbility(target: Gegner) {
         if (used) {
             target.hp -= damage
-            println("Dark Thorns: Es richtet $damage Schaden an.")
+            println("$darkThorns: Es richtet $damage Schaden an.")
             used = true
         } else {
             println("Dark Thorns wurde bereits in dieser Runde verwendet!")

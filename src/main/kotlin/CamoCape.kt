@@ -6,7 +6,7 @@ class CamoCape() {
     fun camoUseAbility(target: Gegner) {
         if (used) {
             target.hp -= damage
-            println("Camo Cape: Es richtet $damage Schaden an.")
+            println("$camoCape: Es richtet $damage Schaden an.")
             used = true
         } else {
             println("Camo Cape wurde bereits in dieser Runde verwendet!")

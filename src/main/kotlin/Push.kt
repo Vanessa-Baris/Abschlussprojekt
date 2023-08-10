@@ -1,11 +1,12 @@
 class Push() {
-    var damage = (30..33).random()
+    var hunt = (30..33).random()
+    var damage = 30..33
     var used: Boolean = false
 
     fun pushUseAbility(target: Gegner) {
         if (used) {
             target.hp -= damage
-            println("Push: Es richtet $damage Schaden an.")
+            println("$hunt: Es richtet $damage Schaden an.")
             used = true
         } else {
             println("Push wurde bereits in dieser Runde verwendet!")

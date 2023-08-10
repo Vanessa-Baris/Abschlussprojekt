@@ -6,7 +6,7 @@ class StaggeringAway {
     fun staggeringUseAbility(target: Gegner) {
         if (used) {
             target.hp -= damage
-            println("Staggering Away: Es richtet $damage Schaden an.")
+            println("$staggeringAway: Es richtet $damage Schaden an.")
             used = true
         } else {
             println("Staggering Away wurde bereits in dieser Runde verwendet!")

@@ -1,3 +1,4 @@
-abstract class EinheitHeld(val name: String, var hp: Int) {
+abstract class EinheitHeld(open val name: String, open var hp: Int) {
+
     abstract fun attack(target: Gegner)
 }

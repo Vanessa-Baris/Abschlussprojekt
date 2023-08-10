@@ -6,7 +6,7 @@ class TreeTrunkLongThrow() {
     fun treeUseAbility(target: Gegner) {
         if (used) {
             target.hp -= damage
-            println("Tree Trunk Long Throw: Es richtet $damage Schaden an.")
+            println("$treeTrunkLongThrow: Es richtet $damage Schaden an.")
             used = true
         } else {
             println("Tree Trunk Long Throw wurde bereits in dieser Runde verwendet!")

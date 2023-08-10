@@ -5,12 +5,10 @@ class Zombie(val name3: String , var hp3: Int): Held(name3 , hp3) {
         var attackChoice = readln().toIntOrNull()
 
         when (attackChoice) {
-            1 -> {
-            }
-            2 -> {
-            }
-            3 -> {
-            }
+            1 -> push(30..33 , Gegner())
+            2 -> hunt(40..50 , Gegner())
+            3 -> nibble(20..30 , Gegner())
+            4 -> staggeringAway(0 , Gegner())
             else -> {
                 println("Ungültige Auswahl.")
             }

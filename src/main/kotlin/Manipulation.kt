@@ -6,7 +6,7 @@ class Manipulation() {
     fun manipulationUseAbility(target: Gegner) {
         if (used) {
             target.hp -= damage
-            println("Manipulation: Es richtet $damage Schaden an.")
+            println("$manipulation: Es richtet $damage Schaden an.")
             used = true
         } else {
             println("Manipulation wurde bereits in dieser Runde verwendet!")

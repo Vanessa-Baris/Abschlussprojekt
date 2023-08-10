@@ -1,6 +1,13 @@
 fun main() {
-    var zombie = Zombie("Olivia" , 60)
-    var gegner = Gegner("XXX" , 200)
+    //Test:
+   var held1 = Oreade(Gegner)
+    var held2 = Zombie(Gegner)
+    var held3 = Vampir(Gegner)
 
-    zombie.push()
+    var gegner1 = Magier(Held)
+    var gegner2 = Golem(Held)
+
+    held1.attack(target = )
+    held2.attack(target = )
+    held3.attack(target = )
 }

@@ -6,7 +6,7 @@ class Nibble() {
     fun nibbleUseAbility(target: Gegner) {
         if (used) {
             target.hp -= damage
-            println("Nibble: Es richtet $damage Schaden an.")
+            println("$nibble: Es richtet $damage Schaden an.")
             used = true
         } else {
             println("Nibble wurde bereits in dieser Runde verwendet!")
