@@ -1,7 +1,7 @@
-open class Gegner {
+open class Gegner(override var name: String, override var hp: Int): EinheitGegner() {
     val actions = mutableListOf<Action>()
 
-    open fun addAction(action: Action) {
+    open fun addAction2(action: Unit) {
         actions.add(action)
     }
 
