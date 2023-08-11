@@ -19,6 +19,7 @@ class Beutel {
         return !hasUsedVitamin
     }
 
+
     fun canUseThisRound(): Boolean {
         return !hasUsedThisRound
     }
@@ -35,6 +36,8 @@ class Beutel {
             println("Der Beutel wurde bereits in dieser Runde genutzt.")
         }
     }
+
+
 
     fun useHealing(held: Held) {
         if (canUseThisRound() && canUseHealing()) {
@@ -58,3 +61,5 @@ class Beutel {
         }
     }
 }
+
+

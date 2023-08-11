@@ -46,7 +46,6 @@ open class Held( open val name: String,  open var hp: Int) {
                 println("$name kann den Beutel in dieser Runde nicht mehr nutzen.")
             }
         }
-
         fun healing(amount: Int) {
             println("$name wird um $amount HP geheilt.")
             hp += amount
@@ -65,6 +64,7 @@ open class Held( open val name: String,  open var hp: Int) {
             println("$name verwendet ein Vitamin und wird dauerhaft um 10% stärker.")
             power(0.1)
         }
+
 
         val actions: MutableList<(Gegner) -> Unit> = mutableListOf()
 
@@ -103,7 +103,15 @@ open class Held( open val name: String,  open var hp: Int) {
                 actions.removeAt(0)
             }
         }
+
+    fun power(d: Double) {
+
     }
+
+    fun healing(i: Int) {
+
+    }
+}
 
 
 
