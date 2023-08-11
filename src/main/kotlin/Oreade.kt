@@ -28,7 +28,7 @@ class Oreade(var name1: String, var hp1: Int) : Held(name1, hp1) {
         addAction { target -> treeTrunkLongThrow(40..53, target) }
     }
 
-    private fun blossomMagic (damage: IntRange, target: Gegner) {
+    fun blossomMagic (damage: IntRange, target: Gegner) {
         target.hp -= damage.random()
         blossomMagicUsed = true
         println("$name1 wirft mit Blüten um sich herum und trifft ${target.name}. Es richtet $damage Schaden an.")
@@ -45,13 +45,12 @@ class Oreade(var name1: String, var hp1: Int) : Held(name1, hp1) {
         }
     }
 
-    private fun darkThorns(damage: IntRange, target: Gegner){
+    fun darkThorns(damage: IntRange, target: Gegner){
         target.hp -= damage.random()
         darkThornsUsed = true
         println("$name1 wirft dunkle Dornen in die Runde und trifft ${target.name} und verursacht $damage Schaden.")
     }
-
-    private fun treeTrunkLongThrow(damage: IntRange, target: Gegner){
+    fun treeTrunkLongThrow(damage: IntRange, target: Gegner){
         target.hp -= damage.random()
         treeTrunkLongThrowUsed = true
         println("$name1 wirft einen Baumstamm und trifft ${target.name}. Es verursacht $damage Schaden.")

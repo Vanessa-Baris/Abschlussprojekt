@@ -24,6 +24,20 @@ open class Gegner(var name: String, var hp: Int) {
             println("$name hat bereits in dieser Runde gekämpft.")
         }
     }
+
+    val actions: MutableList<(Held) -> Unit> = mutableListOf()
+
+    fun addAction(action: (Held) -> Unit) {
+        actions.add(action)
+    }
+
+    fun performActions(target: Held) {
+        for (action in actions) {
+            action(target)
+        }
+    }
 }
+
+
 
 
