@@ -16,7 +16,7 @@ open class Gegner(var name: String, var hp: Int) {
         return true
     }
 
-    fun performAction(target: Gegner) {
+    fun performAction(target: Held) {
         if (canActThisRound()) {
             println("$name kämpft gegen ${target.name}.")
             markAsActedThisRound()
