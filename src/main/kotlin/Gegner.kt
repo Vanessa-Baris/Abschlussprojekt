@@ -2,7 +2,8 @@ open class Gegner(var name: String, var hp: Int) {
 
      var hasActedThisRound: Boolean = false
 
-    fun resetRound(): Boolean {
+
+    open fun resetRound(): Boolean {
         hasActedThisRound = false
         return true
     }
