@@ -28,7 +28,9 @@ open class Held( val name: String,  var hp: Int)  {
 
     //Von Chat GPT Anregung geholt und auf meine Bedürfnisse umgewandelt, da ich nicht wusste, wie ich blocken soll:
     private val actions: MutableList<(Gegner) -> Unit> = mutableListOf()
+//mutableListOf() habe ich aber selbst angelegt.
 
+//Ab hier dann wieder Chat GPT:
     var isBlocked: Boolean = false
 
     fun addAction(action: (Gegner) -> Unit) {
