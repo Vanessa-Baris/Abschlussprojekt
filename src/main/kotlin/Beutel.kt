@@ -3,14 +3,16 @@ class Beutel {
     var hasUsedHealing: Boolean = false
     var hasUsedVitamin: Boolean = false
 
+    var remainingHealingPotions: Int = 3
+
     fun resetRound() {
         hasUsedThisRound = false
-        hasUsedHealing = false
+        remainingHealingPotions = 3
         hasUsedVitamin = false
     }
 
     fun canUseHealing(): Boolean {
-        return !hasUsedHealing
+        return remainingHealingPotions > 0
     }
 
     fun canUseVitamin(): Boolean {
@@ -39,11 +41,12 @@ class Beutel {
             println("${held.name} verwendet einen Heiltrank und stellt HP um die Hälfte wieder her.")
             held.healing(held.hp / 2)
             markAsUsedThisRound()
-            hasUsedHealing = true
+            remainingHealingPotions--
         } else {
             println("Der Heiltrank kann in dieser Runde nicht mehr verwendet werden.")
         }
     }
+
 
     fun useVitamin(held: Held) {
         if (canUseVitamin()) {
