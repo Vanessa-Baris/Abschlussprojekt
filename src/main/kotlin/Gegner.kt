@@ -1,18 +1,29 @@
-open class Gegner( var name: String,  var hp: Int) {
+open class Gegner(var name: String, var hp: Int) {
 
-    open fun addAction2(action: Unit) {
-        actions.add(action)
+     var hasActedThisRound: Boolean = false
+
+    fun resetRound(): Boolean {
+        hasActedThisRound = false
+        return true
     }
 
-    open fun useAction2(target: Held) {
-        if (actions.isNotEmpty()) {
-            val action = actions[0]
-            action.execute(target)
-            //Was will er bei target?
-            actions.removeAt(0)
+    fun canActThisRound(): Boolean {
+        return hasActedThisRound
+    }
+
+    fun markAsActedThisRound(): Boolean {
+        hasActedThisRound = true
+        return true
+    }
+
+    fun performAction(target: Gegner) {
+        if (canActThisRound()) {
+            println("$name kämpft gegen ${target.name}.")
+            markAsActedThisRound()
         } else {
-            println("$name hat keine Attacken mehr.")
+            println("$name hat bereits in dieser Runde gekämpft.")
         }
     }
 }
+
 
