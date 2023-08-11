@@ -65,6 +65,18 @@ open class Held( open val name: String,  open var hp: Int) {
             println("$name verwendet ein Vitamin und wird dauerhaft um 10% stärker.")
             power(0.1)
         }
+        val actions: MutableList<(Gegner) -> Unit> = mutableListOf()
+
+        fun addAction(action: (Gegner) -> Unit) {
+            actions.add(action)
+        }
+
+        fun performActions(target: Gegner) {
+            for (action in actions) {
+                action(target)
+            }
+        }
+    }
 
 
         //Von Chat GPT Anregung geholt und auf meine Bedürfnisse umgewandelt, da ich nicht wusste, wie ich blocken soll:
