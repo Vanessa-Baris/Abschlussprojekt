@@ -90,8 +90,7 @@ class Magier(var nameM: String, var hpM: Int): Gegner(nameM , hpM) {
                 return true
             }
         }
-    }
-}
+
 
 
 
