@@ -69,50 +69,28 @@ fun main() {
         println("♥ ♥ ♥ ♥ ♥ ♥ Runde $round ♥ ♥ ♥ ♥ ♥ ♥")
 
         helden.forEach { held ->
-            val target = if (held is Gegner) character else characterOfTheUser
-            held.randomAttack(target as Gegner)
+            if (held is Gegner) {
+                held.randomAttack(target)
+            } else {
+                println("${held.name} ist kein Gegner.")
+            }
+
+
+            if (golem.isDead() && magier.isDead()) {
+                println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt.Golden Syntax dankt euch!")
+                gameOver = true
+            } else if (helden.all { it.isDead() }) {
+                println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
+                gameOver = true
+            }
         }
-
-
-        if (golem.isDead() && magier.isDead()) {
-            println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt.Golden Syntax dankt euch!")
-            gameOver = true
-        } else if (helden.all { it.isDead() }) {
-            println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
-            gameOver = true
-        }
-    }
-    if (!character.isDead()) {
-        println("${character.name}, wähle deine Attacke:")
-        println("1. Normale Attacke")
-        println("2. Heiltrank verwenden")
-        println("3. Vitamin verwenden")
-
-        if (character is Oreade) {
-            println("1. Blossom Magic")
-            println("2. Clairvoyance")
-            println("3. Dark Thorns")
-            println("4. Tree Trunk Long Throw")
-        } else if (character is Vampir) {
-            println("1. Bite")
-            println("2. Camo Cape")
-            println("3. Manipulation")
-            println("4. Scratch")
-        } else if (character is Zombie) {
-            println("1. Push")
-            println("2. Hunt")
-            println("3. Nibble")
-            println("4. Staggering Away")
-        }
-
-        if (character.name == characterOfTheUser) {
-            println("Wähle deine Aktion:")
+        if (!character.isDead()) {
+            println("${character.name}, wähle deine Attacke:")
             println("1. Normale Attacke")
             println("2. Heiltrank verwenden")
             println("3. Vitamin verwenden")
 
             if (character is Oreade) {
-                println("4. Blossom Magic")
                 println("1. Blossom Magic")
                 println("2. Clairvoyance")
                 println("3. Dark Thorns")
@@ -121,39 +99,65 @@ fun main() {
                 println("1. Bite")
                 println("2. Camo Cape")
                 println("3. Manipulation")
-                println("4. Scratch")            }
-            else if (character is Zombie) {
+                println("4. Scratch")
+            } else if (character is Zombie) {
                 println("1. Push")
                 println("2. Hunt")
                 println("3. Nibble")
                 println("4. Staggering Away")
             }
 
-            val userChoice = readln().toIntOrNull()
+            if (character.name == characterOfTheUser) {
+                println("Wähle deine Aktion:")
+                println("1. Normale Attacke")
+                println("2. Heiltrank verwenden")
+                println("3. Vitamin verwenden")
 
-            when (userChoice) {
-                1 -> character.randomAttack(golem)
-                2 -> character.useHealing()
-                3 -> character.useVitamin()
-                4, 5, 6, 7 -> {
+                if (character is Oreade) {
+                    println("4. Blossom Magic")
+                    println("1. Blossom Magic")
+                    println("2. Clairvoyance")
+                    println("3. Dark Thorns")
+                    println("4. Tree Trunk Long Throw")
+                } else if (character is Vampir) {
+                    println("1. Bite")
+                    println("2. Camo Cape")
+                    println("3. Manipulation")
+                    println("4. Scratch")
+                } else if (character is Zombie) {
+                    println("1. Push")
+                    println("2. Hunt")
+                    println("3. Nibble")
+                    println("4. Staggering Away")
+                }
 
+                val userChoice = readln().toIntOrNull()
+
+                when (userChoice) {
+                    1 -> character.randomAttack(magier)
+                    2 -> character.useHealing()
+                    3 -> character.useVitamin()
+                    4, 5, 6, 7 -> {
+
+                    }
+
+                    else -> {
+                        println("Ungültige Auswahl.")
+                    }
                 }
-                else -> {
-                    println("Ungültige Auswahl.")
-                }
+            } else {
+                character.randomAttack(golem)
             }
-        } else {
-            character.randomAttack(golem)
         }
-    }
 
         if (golem.hp <= 0 || helden.all { held -> held.hp <= 0 }) {
             gameOver = true
             println("Spiel beendet.")
         }
 
-       round++
+        round++
     }
+}
 
 
 
