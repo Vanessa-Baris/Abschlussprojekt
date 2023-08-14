@@ -1,7 +1,8 @@
-class Magier( var name: String,  var hp: Int): Gegner(name , hp){
+import kotlin.random.Random
 
-     var name = "Jack"
-     var hp: Int = 200
+class Magier( var nameM: String,  var hpM: Int): Gegner(nameM , hpM){
+
+
 
     init {
         addAction2()
@@ -21,8 +22,9 @@ class Magier( var name: String,  var hp: Int): Gegner(name , hp){
 }
 
 
-    private fun summon(damage: IntRange , target: Held){
-}
+    fun summonGolem(golem: Golem) {
+        golem.summon()
+    }
 
 
     private fun fireball(damage: IntRange , target: Held){

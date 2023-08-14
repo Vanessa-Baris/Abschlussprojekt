@@ -83,6 +83,7 @@ class Golem (val nameG: String , val hpG: Int): Gegner(nameG , hpG) {
         super.resetRound()
         hasAttackedThisRound = false
         return true
-    }}
+    }
+}
 
 

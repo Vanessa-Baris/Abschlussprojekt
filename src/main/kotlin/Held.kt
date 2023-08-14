@@ -104,10 +104,12 @@ open class Held( open val name: String,  open var hp: Int) {
             }
         }
 
+    // Von IJ verbessert, wo ich nicht ganz konform bin:
     fun power(d: Double) {
 
     }
 
+    // Von IJ verbessert, wo ich nicht ganz konform bin:
     fun healing(i: Int) {
 
     }

@@ -21,6 +21,7 @@ class Oreade(var name1: String, var hp1: Int) : Held(name1, hp1) {
         }
     }
 
+    //Von IJ verbessert, mein Code war vorher ohne: target -> (aber macht schon Sinn)
     init {
         addAction { target -> blossomMagic(50..75, target) }
         addAction { target -> clairvoyance(0, target) }
