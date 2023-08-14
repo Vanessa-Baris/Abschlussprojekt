@@ -85,6 +85,7 @@ fun main() {
             gameOver = true
         }
 
+        // Von Chat GPT, da ich mir den Code ständig zerschoss und nach zwei Stunden Sucherei nicht weiter wusste:
         helden.filter { it !is Gegner }.forEach { held ->
             if (!held.isDead() && !held.canActThisRound()) {
                 held.performAction(magier)
@@ -93,7 +94,7 @@ fun main() {
             }
         }
 
-        // Gegner angreifen
+        // Von Chat GPT, da ich mir den Code ständig zerschoss und nach zwei Stunden Sucherei nicht weiter wusste:
         helden.filterIsInstance<Gegner>().forEach { gegner ->
             if (!gegner.isDead() && !gegner.canActThisRound()) {
                 helden.filter { it !is Gegner && !it.isDead() }.randomOrNull()?.let { target ->
@@ -103,6 +104,7 @@ fun main() {
             }
         }
 
+        //Ab hier wieder meins:
         // Aktionen des Spielers ausführen
         if (!character.isDead()) {
             println("${character.name}, wähle deine Attacke:")
