@@ -104,6 +104,10 @@ open class Held(open val name: String, open var hp: Int) {
             }
         }
 
+    open fun isDead(): Boolean {
+        return hp <= 0
+    }
+
     open fun randomAttack(target: Gegner) {
         println("$name führt eine normale Attacke aus.")
         val damage = 15
