@@ -106,7 +106,7 @@ open class Held(open val name: String, open var hp: Int) {
     }
 
     open fun useHealing() {
-        val beutel = Beutel() // Eine neue Instanz der Beutel-Klasse
+        val beutel = Beutel()
         if (beutel.canUseThisRound() && beutel.canUseHealing()) {
             println("$name verwendet einen Heiltrank und stellt HP um die Hälfte der GesamtHP wieder her.")
             healing(hp / 2)
@@ -118,7 +118,7 @@ open class Held(open val name: String, open var hp: Int) {
     }
 
     open fun useVitamin() {
-        val beutel = Beutel() // Eine neue Instanz der Beutel-Klasse
+        val beutel = Beutel()
         if (beutel.canUseVitamin()) {
             println("$name verwendet ein Vitamin und wird dauerhaft um 10% stärker.")
             power(0.1)
