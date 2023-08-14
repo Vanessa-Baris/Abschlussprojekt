@@ -104,6 +104,13 @@ open class Held(open val name: String, open var hp: Int) {
             }
         }
 
+    open fun randomAttack(target: Gegner) {
+        println("$name führt eine normale Attacke aus.")
+        val damage = 15
+        target.hp -= damage
+        println("$name fügt ${target.name} $damage Schaden zu.")
+    }
+
 
 
     // Von IJ verbessert, wo ich nicht ganz konform bin:

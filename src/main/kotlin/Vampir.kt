@@ -49,5 +49,9 @@ class Vampir(var name2: String, var hp2: Int) : Held(name2, hp2) {
         scratchUsed = true
         println("$name2 kratzt ${target.name} und verursacht $damage Schaden.")
     }
+
+    override fun randomAttack(target: Gegner) {
+        val attackChoice = (1..4).random()
+    }
 }
 
