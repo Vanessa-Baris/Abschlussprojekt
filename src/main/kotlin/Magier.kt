@@ -65,6 +65,8 @@ class Magier(var nameM: String, var hpM: Int): Gegner(nameM , hpM) {
             summonGolemUsed = true
         } else {
             println("Der Golem wurde bereits in dieser Runde beschworen.")
+        }
+    }
 
 
             fun randomAttack(): String? {
@@ -77,7 +79,7 @@ class Magier(var nameM: String, var hpM: Int): Gegner(nameM , hpM) {
                 return possibleAttacks.randomOrNull()
             }
 
-            fun resetRound(): Boolean {
+            override fun resetRound(): Boolean {
                 super.resetRound()
                 var hasAttackedThisRound = false
                 chemicalBurnUsed = false

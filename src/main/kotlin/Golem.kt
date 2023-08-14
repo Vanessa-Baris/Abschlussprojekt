@@ -68,6 +68,7 @@ class Golem (val nameG: String , val hpG: Int): Gegner(nameG , hpG) {
         }
     }
 
+
     //Ab hier wieder meins:
 
     fun randomAttack(): String? {

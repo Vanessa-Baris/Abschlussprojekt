@@ -60,6 +60,14 @@ class Oreade(var name1: String, var hp1: Int) : Held(name1, hp1) {
 
     override fun randomAttack(target: Gegner) {
         val attackChoice = (1..4).random()
+        when (attackChoice) {
+            1 -> blossomMagic(50..75, target)
+            2 -> clairvoyance(0, target)
+            3 -> darkThorns(30..44, target)
+            4 -> treeTrunkLongThrow(40..53, target)
+            else -> println("Ungültige Auswahl.")
+        }
+    }
     }
 }
 

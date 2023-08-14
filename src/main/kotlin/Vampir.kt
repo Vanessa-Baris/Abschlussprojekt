@@ -52,6 +52,13 @@ class Vampir(var name2: String, var hp2: Int) : Held(name2, hp2) {
 
     override fun randomAttack(target: Gegner) {
         val attackChoice = (1..4).random()
+        when (attackChoice) {
+            1 -> bite(44..50, target)
+            2 -> camoCape(5..10, target)
+            3 -> manipulation(30..44, target)
+            4 -> scratch(20..35, target)
+            else -> println("Ungültige Auswahl.")
+        }
     }
 }
 

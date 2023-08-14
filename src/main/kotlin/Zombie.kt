@@ -54,6 +54,14 @@ class Zombie(var name3: String, var hp3: Int) : Held(name3, hp3) {
 
     override fun randomAttack(target: Gegner) {
         val attackChoice = (1..4).random()
+        when (attackChoice) {
+            1 -> push(30..33, target)
+            2 -> hunt(40..50, target)
+            3 -> nibble(20..30, target)
+            4 -> staggeringAway(0, target)
+            else -> println("Ungültige Auswahl.")
+        }
     }
 
-}
+    }
+
