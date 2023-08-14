@@ -1,4 +1,4 @@
-class Zombie(val name3: String, var hp3: Int): Held(name3 , hp3) {
+class Zombie(var name3: String, var hp3: Int) : Held(name3, hp3) {
 
     var pushUsed = false
     var huntUsed = false

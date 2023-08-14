@@ -1,4 +1,4 @@
-open class Held( open val name: String,  open var hp: Int) {
+open class Held(open val name: String, open var hp: Int) {
 
     var hasActedThisRound: Boolean = false
     var hasUsedBeutelThisRound: Boolean = false
@@ -104,6 +104,8 @@ open class Held( open val name: String,  open var hp: Int) {
             }
         }
 
+
+
     // Von IJ verbessert, wo ich nicht ganz konform bin:
     fun power(d: Double) {
 
@@ -111,6 +113,11 @@ open class Held( open val name: String,  open var hp: Int) {
 
     // Von IJ verbessert, wo ich nicht ganz konform bin:
     fun healing(i: Int) {
+
+    }
+
+    // Von IJ verbessert, ich bin nicht so einverstanden, aber fand auch nach 30 min keinen anderen Weg:
+    fun summonGolem(golem: Golem) {
 
     }
 }

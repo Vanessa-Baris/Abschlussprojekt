@@ -1,4 +1,4 @@
-class Vampir(var name2: String , hp2: Int): Held(name2 , hp2) {
+class Vampir(var name2: String, var hp2: Int) : Held(name2, hp2) {
 
     var camoUsed = false
     var biteUsed = false

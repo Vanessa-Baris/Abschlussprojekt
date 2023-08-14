@@ -5,7 +5,7 @@ fun main() {
 
     println("Wähle nun deine Gestalt. Es stehen drei zur Auswahl:")
 
-    val oreade = Oreade("Echo", 50)
+    val oreade = Oreade("Echo",  50)
     println("Die Oreade ${oreade.name} hat ${oreade.hp1} verfügbare Leben, dafür sind ihre Attacken umso stärker.")
 
     val vampir = Vampir("Barnabas", 70)
