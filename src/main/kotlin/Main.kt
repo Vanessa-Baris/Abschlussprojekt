@@ -133,8 +133,8 @@ fun main() {
 
             when (userChoice) {
                 1 -> character.randomAttack(golem)
-                2 -> character.useHealing(character)
-                3 -> character.useVitamin(character)
+                2 -> character.useHealing()
+                3 -> character.useVitamin()
                 4, 5, 6, 7 -> {
 
                 }
