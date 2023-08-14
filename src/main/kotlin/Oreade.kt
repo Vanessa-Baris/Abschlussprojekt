@@ -69,7 +69,7 @@ class Oreade(var name1: String, var hp1: Int) : Held(name1, hp1) {
         }
     }
     }
-}
+
 
 
 
