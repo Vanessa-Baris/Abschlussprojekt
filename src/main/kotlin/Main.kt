@@ -74,7 +74,6 @@ fun main() {
         }
 
 
-        // Hier prüfen wir, ob das Spiel zu Ende ist
         if (golem.isDead() && magier.isDead()) {
             println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt.Golden Syntax dankt euch!")
             gameOver = true
@@ -137,7 +136,7 @@ fun main() {
                 2 -> character.useHealing(character)
                 3 -> character.useVitamin(character)
                 4, 5, 6, 7 -> {
-                    // Hier führst du die spezifischen Angriffe aus, basierend auf der Auswahl
+
                 }
                 else -> {
                     println("Ungültige Auswahl.")
