@@ -136,7 +136,6 @@ fun main() {
                 2 -> character.useHealing()
                 3 -> character.useVitamin()
                 4, 5, 6, 7 -> {
-                    // Weitere Aktionen hier hinzufügen, falls benötigt
                 }
                 else -> {
                     println("Ungültige Auswahl. Bitte wähle eine der angegebenen Optionen.")
