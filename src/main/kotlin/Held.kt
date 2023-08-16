@@ -38,11 +38,6 @@ open class Held (open val name: String, open var hp: Int) {
         hp += amount
     }
 
-    fun useHealing(amount: Int) {
-        println("$name verwendet einen Heiltrank und stellt HP um die Hälfte der GesamtHP wieder her.")
-        healing(amount)
-    }
-
     fun power(factor: Double) {
         println("$name wird um ${factor * 100}% stärker.")
     }

@@ -2,20 +2,22 @@ fun main() {
 
     val helden = mutableListOf<Held>()
 
-    val oreade = Oreade("Echo" ,60)
+    val oreade = Oreade("Echo", 60)
     oreade.hp1 = 60
 
-    val zombie = Zombie("Olivia" , 70)
+    val zombie = Zombie("Olivia", 70)
     zombie.hp3 = 70
 
-    val magier = Magier("Magier Jack" , 200)
+    val magier = Magier("Magier Jack", 200)
     magier.hp = 200
 
-    val golem = Golem("Golem" , 100)
+    val golem = Golem("Golem", 100)
     golem.hp = 100
 
-    val vampir = Vampir("Barnabas" , 80)
+    val vampir = Vampir("Barnabas", 80)
     vampir.hp2 = 80
+
+    val beutel = Beutel()
 
 
     println("Willkommen im Videospiel 'Golden Syntax'.")
@@ -48,22 +50,32 @@ fun main() {
 
     println("Nimm deinen Platz ein. Der Kampf beginnt!")
 
-    if (!character.isDead()) {
-        if (character is Oreade) {
-            character.attack(magier)
-        } else if (character is Vampir) {
-            character.attack(magier)
-        } else if (character is Zombie) {
-            character.attack(magier)
-        }
-    }
-
-
     var round = 1
     var gameOver = false
 
     while (!gameOver) {
         println("♥ ♥ ♥ ♥ ♥ ♥ Runde $round ♥ ♥ ♥ ♥ ♥ ♥")
+
+        if (!character.isDead()) {
+            if (character is Oreade) {
+                character.attack(magier)
+            } else if (character is Vampir) {
+                character.attack(magier)
+            } else if (character is Zombie) {
+                character.attack(magier)
+            }
+        }
+
+        if (!character.isDead() && !character.canActThisRound()) {
+            character.useVitamin()
+            beutel.useBag()
+            beutel.resetRound()
+            character.markAsActedThisRound()
+        }
+    }
+
+
+    character.useAction(target = Gegner())
 
         helden.forEach { held ->
             if (held !is Gegner) {
@@ -83,35 +95,37 @@ fun main() {
         }
 
         // Von Chat GPT, da ich mir den Code ständig zerschoss und nach zwei Stunden Sucherei nicht weiter wusste:
-        helden.filter { it !is Gegner }.forEach { held ->
-            if (!held.isDead() && !held.canActThisRound()) {
-                held.performAction(magier)
-                held.performAction(golem)
-                held.markAsActedThisRound()
+        helden.forEach { held ->
+            if (held !is Gegner) {
+                held.randomAttack(golem)
+                held.randomAttack(magier)
+            } else {
+                println("${held.name} ist kein Held.")
             }
         }
 
         // Von Chat GPT, da ich mir den Code ständig zerschoss und nach zwei Stunden Sucherei nicht weiter wusste:
-        helden.filterIsInstance<Gegner>().forEach { gegner ->
-            if (!gegner.isDead() && !gegner.canActThisRound()) {
-                helden.filter { it !is Gegner && !it.isDead() }.randomOrNull()?.let { target ->
-                    gegner.performAction(target)
-                    gegner.markAsActedThisRound()
-                }
-            }
+        if (!character.isDead() && !character.canActThisRound()) {
+            character.randomAttack((magier))
+            character.markAsActedThisRound()
         }
+    }
 
-        //Ab hier wieder meins:
 
-        // Überprüfe, ob das Spiel zu Ende ist
-        if (golem.hp <= 0 || helden.all { held -> held.hp <= 0 }) {
+    //Ab hier wieder meins:
+    if (golem.isDead() && magier.isDead()) {
+        println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
+        gameOver = true
+        } else if (helden.all { it.isDead() }) {
+            println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
             gameOver = true
-            println("Spiel beendet.")
         }
-
         round++
     }
-}
+
+
+
+
 
 
 

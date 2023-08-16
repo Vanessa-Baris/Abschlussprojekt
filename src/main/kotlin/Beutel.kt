@@ -1,24 +1,16 @@
 class Beutel {
+    var hasUsedVitamin: Boolean = false 
     var hasUsedThisRound: Boolean = false
-    var hasUsedHealing: Boolean = false
-    var hasUsedVitamin: Boolean = false
-
     var remainingHealingPotions: Int = 3
 
     fun resetRound() {
         hasUsedThisRound = false
         remainingHealingPotions = 3
-        hasUsedVitamin = false
     }
 
     fun canUseHealing(): Boolean {
         return remainingHealingPotions > 0
     }
-
-    fun canUseVitamin(): Boolean {
-        return !hasUsedVitamin
-    }
-
 
     fun canUseThisRound(): Boolean {
         return !hasUsedThisRound
@@ -36,6 +28,15 @@ class Beutel {
             println("Der Beutel wurde bereits in dieser Runde genutzt.")
         }
     }
+
+    //Von IJ:
+    fun canUseVitamin(): Boolean {
+        return !hasUsedVitamin
+
+    }
 }
+
+   
+
 
 
