@@ -36,7 +36,7 @@ open class Gegner(var name: String, var hp: Int) {
         return hp <= 0
     }
 
-    fun attack(magier: Held) {
+    fun attack(magier: Magier) {
 
     }
 }

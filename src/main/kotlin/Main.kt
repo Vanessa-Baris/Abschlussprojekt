@@ -84,7 +84,7 @@ fun main() {
         if (!magier.isDead()) {
             for (held in helden) {
                 if (!held.isDead()) {
-                    magier.attack(held)
+                    magier.randomAttack()
                 }
             }
         }
