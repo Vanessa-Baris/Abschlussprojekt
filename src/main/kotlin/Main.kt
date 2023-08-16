@@ -48,29 +48,16 @@ fun main() {
 
     println("Nimm deinen Platz ein. Der Kampf beginnt!")
 
-    println("${character.name}, wähle deine Attacke:")
-    println("1. Normale Attacke")
-    println("2. Heiltrank verwenden")
-    println("3. Vitamin verwenden")
-
-    if (character is Oreade) {
-        println("1. Blossom Magic")
-        println("2. Clairvoyance")
-        println("3. Dark Thorns")
-        println("4. Tree Trunk Long Throw")
-    } else if (character is Vampir) {
-        println("1. Bite")
-        println("2. Camo Cape")
-        println("3. Manipulation")
-        println("4. Scratch")
-    } else if (character is Zombie) {
-        println("1. Push")
-        println("2. Hunt")
-        println("3. Nibble")
-        println("4. Staggering Away")
-
-        readln()
+    if (!character.isDead()) {
+        if (character is Oreade) {
+            character.attack(magier)
+        } else if (character is Vampir) {
+            character.attack(magier)
+        } else if (character is Zombie) {
+            character.attack(magier)
+        }
     }
+
 
     var round = 1
     var gameOver = false
@@ -115,45 +102,6 @@ fun main() {
         }
 
         //Ab hier wieder meins:
-        // Aktionen des Spielers ausführen
-        if (!character.isDead()) {
-            println("${character.name}, wähle deine Attacke:")
-            println("1. Normale Attacke")
-            println("2. Heiltrank verwenden")
-            println("3. Vitamin verwenden")
-
-            if (character is Oreade) {
-                println("4. Blossom Magic")
-                println("5. Clairvoyance")
-                println("6. Dark Thorns")
-                println("7. Tree Trunk Long Throw")
-            } else if (character is Vampir) {
-                println("4. Bite")
-                println("5. Camo Cape")
-                println("6. Manipulation")
-                println("7. Scratch")
-            } else if (character is Zombie) {
-                println("4. Push")
-                println("5. Hunt")
-                println("6. Nibble")
-                println("7. Staggering Away")
-            }
-
-            val userChoice = readln().toIntOrNull()
-
-            when (userChoice) {
-                1 -> character.randomAttack(magier)
-                2 -> character.useHealing()
-                3 -> character.useVitamin()
-                4, 5, 6, 7 -> {
-                }
-                else -> {
-                    println("Ungültige Auswahl. Bitte wähle eine der angegebenen Optionen.")
-                }
-            }
-        } else {
-            character.randomAttack(golem)
-        }
 
         // Überprüfe, ob das Spiel zu Ende ist
         if (golem.hp <= 0 || helden.all { held -> held.hp <= 0 }) {

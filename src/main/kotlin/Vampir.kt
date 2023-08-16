@@ -5,7 +5,7 @@ class Vampir(var name2: String, var hp2: Int) : Held(name2, hp2) {
     var manipulationUsed = false
     var scratchUsed = false
      fun attack(target: Gegner) {
-        println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-3 ein.")
+        println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-4 ein.")
         var attackChoice = readln().toIntOrNull()
 
         when (attackChoice) {
