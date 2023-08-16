@@ -1,12 +1,21 @@
 fun main() {
 
-    var golem = Golem("Golem", 100)
-    var magier = Magier("Magier Jack", 200)
-
     val helden = mutableListOf<Held>()
-    helden.add(Oreade("Echo", 50))
-    helden.add(Vampir("Barnabas", 70))
-    helden.add(Zombie("Olivia", 60))
+
+    val oreade = Oreade("Echo" ,60)
+    oreade.hp1 = 60
+
+    val zombie = Zombie("Olivia" , 70)
+    zombie.hp3 = 70
+
+    val magier = Magier("Magier Jack" , 200)
+    magier.hp = 200
+
+    val golem = Golem("Golem" , 100)
+    golem.hp = 100
+
+    val vampir = Vampir("Barnabas" , 80)
+    vampir.hp2 = 80
 
 
     println("Willkommen im Videospiel 'Golden Syntax'.")
@@ -15,13 +24,13 @@ fun main() {
 
     println("Wähle nun deine Gestalt. Es stehen drei zur Auswahl:")
 
-    val oreade = Oreade("Echo", 50)
+    val oreade = Oreade("Echo", 60)
     println("Die Oreade ${oreade.name} hat ${oreade.hp1} verfügbare Leben, dafür sind ihre Attacken umso stärker.")
 
     val vampir = Vampir("Barnabas", 70)
     println("Der Vampir ${vampir.name} hat ${vampir.hp} verfügbare Leben, doch lass dir gesagt sein, der stärkste ist er nicht.")
 
-    val zombie = Zombie("Olivia", 60)
+    val zombie = Zombie("Olivia", 80)
     println("Der Zombie ${zombie.name} hat ${zombie.hp3} verfügbare Leben, dafür ist sie aber nicht die mutigste.")
 
     println("Such dir nun aus, welchen der drei du bespielen möchtest. Die flinke Echo? Den blutsaugenden Barnabas? Oder doch lieber die vergammelten Olivia?")
