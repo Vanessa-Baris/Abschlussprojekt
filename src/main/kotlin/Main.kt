@@ -65,10 +65,10 @@ fun main() {
                     println("${character.name} kann entweder angreifen oder den Beutel nutzen. Wähle angreifen oder beutel.")
                     val chosenAction = readln()
 
+                    //Chat GPT bei Zeile 71 um Hilfe gefragt:
                     when (chosenAction) {
                         "angreifen" -> {
                             println("Welche Attacke möchtest du verwenden?")
-                            // Hier kannst du die verfügbaren Angriffe ausgeben und die gewählte Attacke verarbeiten
                         }
 
                         "beutel" -> {
