@@ -58,6 +58,29 @@ fun main() {
     while (!gameOver) {
         println("♥ ♥ ♥ ♥ ♥ ♥ Runde $round ♥ ♥ ♥ ♥ ♥ ♥")
 
+        if (!character.isDead() && !character.canActThisRound() && !character.canUseBeutelThisRound()) {
+            println("${character.name} kann entweder angreifen oder den Beutel nutzen. Wähle angreifen oder beutel.")
+            val chosenAction = readln()
+
+            when (chosenAction) {
+                "angreifen" -> {
+                    println("Welche Attacke möchtest du verwenden?")
+                }
+                "beutel" -> {
+                    beutel.useBag()
+                    beutel.resetRound()
+                    character.useVitamin()
+                }
+                else -> {
+                    println("Ungültige Eingabe. Wähle 'angreifen' oder 'beutel'.")
+                    continue
+                }
+            }
+        } else {
+            println("${character.name} hat bereits in dieser Runde gekämpft.")
+        }
+    }
+
         if (!character.isDead()) {
             if (character is Oreade) {
                 character.attack(magier)
@@ -69,93 +92,105 @@ fun main() {
         }
 
         if (!character.isDead() && !character.canActThisRound()) {
-            character.useVitamin()
-            beutel.useBag()
-            beutel.resetRound()
+            println("${character.name} verwendet einen Heiltrank und stellt HP um die Hälfte der GesamtHP wieder her.")
+            character.healing(character.hp / 2)
+            character.markBeutelAsUsedThisRound()
             character.markAsActedThisRound()
         }
-    }
 
-    if (!character.isDead() && !character.canActThisRound()) {
-        character.randomAttack(magier)
-        character.markAsActedThisRound()
-    }
+        character.resetRound()
+        character.markBeutelAsUsedThisRound()
 
-
-   // character.useAction(target = Gegner())
-
-    if (golem.hasBeenSummoned) {
-        golem.attackOnce(character)
-    }
-    magier.performAction(character)
-
-
-    helden.forEach { held ->
-        if (held !is Gegner) {
-            held.randomAttack(golem)
-            held.randomAttack(magier)
-        } else {
-            println("${held.name} ist kein Held.")
+        if (!character.isDead() && !character.canActThisRound()) {
+            character.randomAttack(magier)
+            character.markAsActedThisRound()
         }
-    }
 
-    val magierAttackType = magier.randomAttack()
-    if (magierAttackType != null) {
-        val targetHeld = helden.filter { it !is Gegner && !it.isDead() }.randomOrNull()
-        if (targetHeld != null) {
-            when (magierAttackType) {
-                "chemicalBurn" -> magier.chemicalBurn(20, targetHeld)
-                "curse" -> magier.curse(targetHeld)
-                "howler" -> magier.howler(10, targetHeld)
-                "hurricane" -> magier.hurricane(50, targetHeld)
-                "fireball" -> magier.fireball(30, targetHeld)
+        character.useAction(golem)
+
+
+        // character.useAction(target = Gegner())
+
+        if (golem.hasBeenSummoned) {
+            golem.attackOnce(character)
+        }
+        magier.performAction(character)
+
+        helden.forEach { held ->
+            if (held !is Gegner) {
+                held.randomAttack(golem)
+                held.randomAttack(magier)
+            } else {
+                println("${held.name} ist kein Held.")
             }
         }
-    }
 
-
-    if (golem.isDead() && magier.isDead()) {
-        println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
-        gameOver = true
-    } else if (helden.all { it.isDead() }) {
-        println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
-        gameOver = true
-    }
-
-    // Von Chat GPT, da ich mir den Code ständig zerschoss und nach zwei Stunden Sucherei nicht weiter wusste:
-    helden.forEach { held ->
-        if (held !is Gegner) {
-            held.randomAttack(golem)
-            held.randomAttack(magier)
-        } else {
-            println("${held.name} ist kein Held.")
+        if (!character.isDead() && !character.canActThisRound()) {
+            character.randomAttack(magier)
+            character.markAsActedThisRound()
         }
-    }
 
-    // Von Chat GPT, da ich mir den Code ständig zerschoss und nach zwei Stunden Sucherei nicht weiter wusste:
-    if (!character.isDead() && !character.canActThisRound()) {
-        character.randomAttack((magier))
-        character.markAsActedThisRound()
-    }
-
-
-    if (golem.isDead() && magier.isDead()) {
-        println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
-        gameOver = true
-    } else if (helden.all { it.isDead() }) {
-        println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
-        gameOver = true
-    }
-    round++
-}
+        val magierAttackType = magier.randomAttack()
+        if (magierAttackType != null) {
+            val targetHeld = helden.filter { it !is Gegner && !it.isDead() }.randomOrNull()
+            if (targetHeld != null) {
+                when (magierAttackType) {
+                    "chemicalBurn" -> magier.chemicalBurn(20, targetHeld)
+                    "curse" -> magier.curse(targetHeld)
+                    "howler" -> magier.howler(10, targetHeld)
+                    "hurricane" -> magier.hurricane(50, targetHeld)
+                    "fireball" -> magier.fireball(30, targetHeld)
+                }
+            }
+        }
 
 
+        if (golem.isDead() && magier.isDead()) {
+            println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
+            gameOver = true
+        } else if (helden.all { it.isDead() }) {
+            println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
+            gameOver = true
+        }
+
+        // Von Chat GPT, da ich mir den Code ständig zerschoss und nach zwei Stunden Sucherei nicht weiter wusste:
+        helden.forEach { held ->
+            if (held !is Gegner) {
+                held.randomAttack(golem)
+                held.randomAttack(magier)
+            } else {
+                println("${held.name} ist kein Held.")
+            }
+        }
+
+        // Von Chat GPT, da ich mir den Code ständig zerschoss und nach zwei Stunden Sucherei nicht weiter wusste:
+        if (!character.isDead() && !character.canActThisRound()) {
+            character.randomAttack((magier))
+            character.markAsActedThisRound()
+        }
+
+
+        if (golem.isDead() && magier.isDead()) {
+            println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
+            gameOver = true
+        } else if (helden.all { it.isDead() }) {
+            println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
+            gameOver = true
+        }
+        round++
+        }
 
 
 
 
 
-//Ab hier wieder meins:
+
+
+
+
+
+
+
 
 
 

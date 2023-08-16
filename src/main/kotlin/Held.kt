@@ -2,7 +2,6 @@ open class Held (open val name: String, open var hp: Int) {
 
     var hasActedThisRound: Boolean = false
     var hasUsedBeutelThisRound: Boolean = false
-
     fun resetRound() {
         hasActedThisRound = false
         hasUsedBeutelThisRound = false
