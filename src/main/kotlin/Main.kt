@@ -13,11 +13,13 @@ fun main() {
 
     val golem = Golem("Golem", 100)
     golem.hp = 100
+    golem.summon(magier)
 
     val vampir = Vampir("Barnabas", 80)
     vampir.hp2 = 80
 
     val beutel = Beutel()
+
 
 
     println("Willkommen im Videospiel 'Golden Syntax'.")
@@ -77,51 +79,74 @@ fun main() {
 
     character.useAction(target = Gegner())
 
-        helden.forEach { held ->
-            if (held !is Gegner) {
-                held.randomAttack(golem)
-                held.randomAttack(magier)
-            } else {
-                println("${held.name} ist kein Held.")
+    helden.forEach { held ->
+        if (held !is Gegner) {
+            held.randomAttack(golem)
+            held.randomAttack(magier)
+        } else {
+            println("${held.name} ist kein Held.")
+        }
+    }
+
+    val magierAttackType = magier.randomAttack()
+    if (magierAttackType != null) {
+        val targetHeld = helden.filter { it !is Gegner && !it.isDead() }.randomOrNull()
+        if (targetHeld != null) {
+            when (magierAttackType) {
+                "chemicalBurn" -> magier.chemicalBurn(20, targetHeld)
+                "curse" -> magier.curse(targetHeld)
+                "howler" -> magier.howler(10, targetHeld)
+                "hurricane" -> magier.hurricane(50, targetHeld)
+                "fireball" -> magier.fireball(30, targetHeld)
             }
-        }
-
-        if (golem.isDead() && magier.isDead()) {
-            println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
-            gameOver = true
-        } else if (helden.all { it.isDead() }) {
-            println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
-            gameOver = true
-        }
-
-        // Von Chat GPT, da ich mir den Code ständig zerschoss und nach zwei Stunden Sucherei nicht weiter wusste:
-        helden.forEach { held ->
-            if (held !is Gegner) {
-                held.randomAttack(golem)
-                held.randomAttack(magier)
-            } else {
-                println("${held.name} ist kein Held.")
-            }
-        }
-
-        // Von Chat GPT, da ich mir den Code ständig zerschoss und nach zwei Stunden Sucherei nicht weiter wusste:
-        if (!character.isDead() && !character.canActThisRound()) {
-            character.randomAttack((magier))
-            character.markAsActedThisRound()
         }
     }
 
 
-    //Ab hier wieder meins:
     if (golem.isDead() && magier.isDead()) {
         println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
         gameOver = true
-        } else if (helden.all { it.isDead() }) {
-            println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
-            gameOver = true
-        }
-        round++
+    } else if (helden.all { it.isDead() }) {
+        println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
+        gameOver = true
     }
+
+    // Von Chat GPT, da ich mir den Code ständig zerschoss und nach zwei Stunden Sucherei nicht weiter wusste:
+    helden.forEach { held ->
+        if (held !is Gegner) {
+            held.randomAttack(golem)
+            held.randomAttack(magier)
+        } else {
+            println("${held.name} ist kein Held.")
+        }
+    }
+
+    // Von Chat GPT, da ich mir den Code ständig zerschoss und nach zwei Stunden Sucherei nicht weiter wusste:
+    if (!character.isDead() && !character.canActThisRound()) {
+        character.randomAttack((magier))
+        character.markAsActedThisRound()
+    }
+
+
+    if (golem.isDead() && magier.isDead()) {
+        println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
+        gameOver = true
+    } else if (helden.all { it.isDead() }) {
+        println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
+        gameOver = true
+    }
+    round++
+}
+
+
+
+
+
+
+
+//Ab hier wieder meins:
+
+
 
 
 

@@ -43,13 +43,14 @@ class Golem (val nameG: String , val hpG: Int): Gegner(nameG , hpG) {
 
     //Die summon Funktion habe ich eine Inspiration auf Stackoverflow gefunden und auf mich angepasst:
     fun summon(target: Magier) {
-       if (hasBeenSummoned) {
+        if (!hasBeenSummoned) {
             println("Der Golem wurde beschworen!")
             hasBeenSummoned = true
         } else {
             println("Der Golem wurde bereits beschworen.")
         }
     }
+
 
 
     //Und das hier auch auf Stackoverlow:
