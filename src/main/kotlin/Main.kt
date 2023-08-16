@@ -57,7 +57,7 @@ fun main() {
 
         if (!character.isDead() && !character.hasActedThisRound && !character.canUseBeutelThisRound()) {
             println("${character.name} kann entweder angreifen oder den Beutel nutzen. Wähle angreifen oder beutel.")
-            val chosenAction = readLine()
+            val chosenAction = readln()
 
             when (chosenAction) {
                 "angreifen" -> {
@@ -65,10 +65,12 @@ fun main() {
                     character.attack(target)
                     character.markAsActedThisRound()
                 }
+
                 "beutel" -> {
                     beutel.useBag()
                     character.markAsActedThisRound()
                 }
+
                 else -> {
                     println("Ungültige Aktion gewählt.")
                 }
@@ -105,6 +107,7 @@ fun main() {
             }
         }
 
+        //Von ChatGPT:
         helden.filterIsInstance<Gegner>().forEach { gegner ->
             if (!gegner.isDead() && !gegner.hasActedThisRound) {
                 gegner.attack(magier)
