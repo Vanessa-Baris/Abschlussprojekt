@@ -47,10 +47,6 @@ open class Held (open val name: String, open var hp: Int) {
         println("$name wird um ${factor * 100}% stärker.")
     }
 
-     fun useVitamin() {
-        println("$name verwendet ein Vitamin und wird dauerhaft um 10% stärker.")
-        power(0.1)
-    }
 
     val actions: MutableList<(Gegner) -> Unit> = mutableListOf()
     var isBlocked: Boolean = false
