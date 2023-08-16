@@ -32,12 +32,6 @@ open class Gegner(var name: String, var hp: Int) {
         actions.add(action)
     }
 
-    fun performActions(target: Held) {
-        for (action in actions) {
-            action(target)
-        }
-    }
-
     open fun isDead(): Boolean {
         return hp <= 0
     }

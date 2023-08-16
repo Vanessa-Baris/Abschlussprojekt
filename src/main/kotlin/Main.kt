@@ -76,8 +76,19 @@ fun main() {
         }
     }
 
+    if (!character.isDead() && !character.canActThisRound()) {
+        character.randomAttack(magier)
+        character.markAsActedThisRound()
+    }
 
-    character.useAction(target = Gegner())
+
+   // character.useAction(target = Gegner())
+
+    if (golem.hasBeenSummoned) {
+        golem.attackOnce(character)
+    }
+    magier.performAction(character)
+
 
     helden.forEach { held ->
         if (held !is Gegner) {
