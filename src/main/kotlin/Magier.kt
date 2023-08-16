@@ -43,6 +43,7 @@ class Magier(var nameM: String, var hpM: Int): Gegner(nameM , hpM) {
         println("Der Magier Jack heult ohrenbetäubend und trifft ${target.name}, Er macht $damage Schaden.")
     }
 
+    //Von Stackoverflow übernommen:
     fun curse(target: Held) {
         val maxHp = target.hp
         val minHpValue = (maxHp * 0.2).toInt()
@@ -68,7 +69,7 @@ class Magier(var nameM: String, var hpM: Int): Gegner(nameM , hpM) {
         }
     }
 
-
+//Ab hier wieder meins:
             fun randomAttack(): String? {
                 val possibleAttacks = mutableListOf<String>()
                 if (!chemicalBurnUsed) possibleAttacks.add("chemicalBurn")
