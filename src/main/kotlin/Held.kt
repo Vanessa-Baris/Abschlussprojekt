@@ -102,4 +102,12 @@ open class Held (open val name: String, open var hp: Int) {
         target.hp -= damage
         println("$name fügt ${target.name} $damage Schaden zu.")
     }
+
+
+
+
+    fun summonGolem(golem: Golem) {
+        println("$name ruft den Golem zur Unterstützung!")
+        golem.attackOnce(this)
+    }
 }

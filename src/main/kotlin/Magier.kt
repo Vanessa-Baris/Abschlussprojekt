@@ -69,28 +69,32 @@ class Magier(var nameM: String, var hpM: Int): Gegner(nameM , hpM) {
         }
     }
 
-//Ab hier wieder meins:
-            fun randomAttack(): String? {
-                val possibleAttacks = mutableListOf<String>()
-                if (!chemicalBurnUsed) possibleAttacks.add("chemicalBurn")
-                if (!curseUsed) possibleAttacks.add("curse")
-                if (!howlerUsed) possibleAttacks.add("howler")
-                if (!hurricaneUsed) possibleAttacks.add("hurricane")
-                if (!fireballUsed) possibleAttacks.add("fireball")
-                return possibleAttacks.randomOrNull()
-            }
 
-            override fun resetRound(): Boolean {
-                super.resetRound()
-                var hasAttackedThisRound = false
-                chemicalBurnUsed = false
-                curseUsed = false
-                howlerUsed = false
-                hurricaneUsed = false
-                fireballUsed = false
-                return true
-            }
+        //Ab hier wieder meins:
+        fun randomAttack(): String? {
+            val possibleAttacks = mutableListOf<String>()
+            if (!chemicalBurnUsed) possibleAttacks.add("chemicalBurn")
+            if (!curseUsed) possibleAttacks.add("curse")
+            if (!howlerUsed) possibleAttacks.add("howler")
+            if (!hurricaneUsed) possibleAttacks.add("hurricane")
+            if (!fireballUsed) possibleAttacks.add("fireball")
+            return possibleAttacks.randomOrNull()
         }
+
+        override fun resetRound(): Boolean {
+            super.resetRound()
+            var hasAttackedThisRound = false
+            chemicalBurnUsed = false
+            curseUsed = false
+            howlerUsed = false
+            hurricaneUsed = false
+            fireballUsed = false
+            return true
+        }
+    }
+
+
+
 
 
 

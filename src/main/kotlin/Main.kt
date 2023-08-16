@@ -8,6 +8,7 @@ fun main() {
     helden.add(Vampir("Barnabas", 70))
     helden.add(Zombie("Olivia", 60))
 
+
     println("Willkommen im Videospiel 'Golden Syntax'.")
 
     println("Willkommen in Golden Syntax! Tauche in eine magische Welt ein, in der du als Held einen epischen Kampf gegen den bösen Magier erlebst. Doch Vorsicht! Er kann einen Golem beschwören. Bist du bereit für diese Herausforderung? Dann zieh deinen Dolch, aktiviere deine Magie und stürze dich in den Kampf. Die Welt von Golden Syntax erwartet dich mit offenen Armen – komm und erlebe, wie du zu einer Legende wirst!")
@@ -37,6 +38,7 @@ fun main() {
         }
     }
     println("Du hast ${character.name} als deine Gestalt gewählt. Viel Spaß im Kampf!")
+
 
     println("Nimm deinen Platz ein. Der Kampf beginnt!")
 

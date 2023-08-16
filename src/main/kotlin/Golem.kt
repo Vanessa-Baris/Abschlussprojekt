@@ -20,7 +20,7 @@ class Golem (val nameG: String , val hpG: Int): Gegner(nameG , hpG) {
     fun push(damage: IntRange, target: Held) {
         target.hp -= damage.random()
         pushUsed = true
-        println("$nameG beißt ${target.name} in den Hals und verursacht $damage Schaden.")
+        println("$nameG stößt ${target.name} weg und verursacht $damage Schaden.")
     }
 
     fun mudBreath(damage: IntRange, target: Held) {
@@ -42,14 +42,15 @@ class Golem (val nameG: String , val hpG: Int): Gegner(nameG , hpG) {
     }
 
     //Die summon Funktion habe ich eine Inspiration auf Stackoverflow gefunden und auf mich angepasst:
-    fun summon() {
-        if (hasBeenSummoned) {
+    fun summon(target: Magier) {
+       if (hasBeenSummoned) {
             println("Der Golem wurde beschworen!")
             hasBeenSummoned = true
         } else {
             println("Der Golem wurde bereits beschworen.")
         }
     }
+
 
     //Und das hier auch auf Stackoverlow:
     fun attackOnce(target: Held) {
