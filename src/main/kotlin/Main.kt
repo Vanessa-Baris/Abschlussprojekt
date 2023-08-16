@@ -100,6 +100,15 @@ fun main() {
                 }
             }
 
+            var allCharactersActed = false
+            while (!allCharactersActed) {
+                allCharactersActed = true
+
+                for (held in helden) {
+                    if (held is Gegner || held.hasActedThisRound) {
+                        continue
+                    }
+
             if (!character.isDead() && !character.canActThisRound()) {
                 println("${character.name} verwendet einen Heiltrank und stellt HP um die Hälfte der GesamtHP wieder her.")
                 character.healing(character.hp / 2)
@@ -124,14 +133,21 @@ fun main() {
             magier.performAction(character)
 
             //Chat GPT um Hilfe gefragt:
-            helden.filter { it !is Gegner && !it.isDead() }.forEach { held ->
-                held.randomAttack(golem)
-                held.randomAttack(magier)
-            }
+            helden.forEach { held ->
+                if (held !is Gegner && !held.isDead() && !held.hasActedThisRound) {
+                    held.randomAttack(magier)
+                    held.markAsActedThisRound()
+                }
 
+            }
             if (!character.isDead() && !character.canActThisRound()) {
                 character.randomAttack(magier)
                 character.markAsActedThisRound()
+            }
+
+                    held.markAsActedThisRound()
+                    allCharactersActed = false
+                }
             }
 
             //Ab hier wieder meins:
@@ -157,10 +173,15 @@ fun main() {
                 gameOver = true
             }
 
-            round++
+        }
+
+        helden.forEach { it.resetRound() }
+
+        round++
         }
     }
-}
+
+
 
 
 
