@@ -104,4 +104,8 @@ open class Held (open val name: String, open var hp: Int) {
         println("$name ruft den Golem zur Unterstützung!")
         golem.attackOnce(this)
     }
+
+    fun attack(target: Magier) {
+
+    }
 }

@@ -35,6 +35,10 @@ open class Gegner(var name: String, var hp: Int) {
     open fun isDead(): Boolean {
         return hp <= 0
     }
+
+    fun attack(magier: Held) {
+
+    }
 }
 
 
