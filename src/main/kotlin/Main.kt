@@ -17,6 +17,10 @@ fun main() {
     val vampir = Vampir("Barnabas", 80)
     vampir.hp2 = 80
 
+    helden.add(oreade)
+    helden.add(zombie)
+    helden.add(vampir)
+
     val beutel = Beutel()
 
     println("Willkommen im Videospiel 'Golden Syntax'.")
@@ -45,6 +49,8 @@ fun main() {
             return
         }
     }
+    helden.remove(character)
+
     println("Du hast ${character.name} als deine Gestalt gewählt. Viel Spaß im Kampf!")
 
     println("Nimm deinen Platz ein. Der Kampf beginnt!")
@@ -55,67 +61,61 @@ fun main() {
     while (!gameOver) {
         println("♥ ♥ ♥ ♥ ♥ ♥ Runde $round ♥ ♥ ♥ ♥ ♥ ♥")
 
-        for (held in helden) {
-            if (!held.isDead() && !held.hasActedThisRound && !held.canUseBeutelThisRound()) {
-                println("${held.name} kann entweder angreifen oder den Beutel nutzen. Wähle angreifen oder beutel.")
+                 println("${character.name} kann entweder angreifen oder den Beutel nutzen. Wähle angreifen oder beutel.")
                 val heldAction = readLine()
 
                 when (heldAction) {
                     "angreifen" -> {
-                        val target = magier
-                        held.performAction(target)
-                        held.markAsActedThisRound()
+
+                        //immer das gleiche attack, könnte man anpassen minimieren
+                        if (!character.isDead()) {
+                            if (character is Oreade) {
+                                character.attack(magier)
+                            } else if (character is Vampir) {
+                                character.attack(magier)
+                            } else if (character is Zombie) {
+                                character.attack(magier)
+                            }
+                        }
                     }
 
                     "beutel" -> {
                         beutel.useBag()
-                        held.markAsActedThisRound()
                     }
 
                     else -> {
                         println("Ungültige Aktion gewählt.")
                     }
                 }
-            } else {
-                held.resetRound()
-            }
-        }
+
+//
 
         for (held in helden) {
             if (!held.isDead()) {
-                held.attack(magier)
+                held.randomAttack(magier)
             }
         }
 
         if (!magier.isDead()) {
-            for (held in helden) {
+            for (held in helden) { //Fehler, wenn Magier angreift, dann zieht er sich aus Karton raus Helden, meinen kann er nicht angreifen, da er nicht in Held ist
                 if (!held.isDead()) {
-                    magier.randomAttack()
+                    magier.randomAttack(held)
                 }
             }
         }
 
-        if (!character.isDead()) {
-            if (character is Oreade) {
-                character.attack(magier)
-            } else if (character is Vampir) {
-                character.attack(magier)
-            } else if (character is Zombie) {
-                character.attack(magier)
-            }
-        }
+
 
         //Doppelung, sinnvoll das raus zu machen? Hauptchara greift oben ja schon an:
-        if (!character.isDead() && character.hasActedThisRound) {
-            if (character is Oreade || character is Vampir || character is Zombie) {
-                character.attack(magier)
-            }
-        }
+      //  if (!character.isDead() && character.hasActedThisRound) {
+        //    if (character is Oreade || character is Vampir || character is Zombie) {
+        //        character.attack(magier)
+        //    }
+            // }
 
-        if (golem.isDead() && magier.isDead()) {
-            println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
-            gameOver = true
-        } else if (helden.all { it.isDead() }) {
+       if (golem.isDead() && magier.isDead()) {
+           println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
+             } else if (helden.all { it.isDead() }) {
             println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
             gameOver = true
         }

@@ -1,5 +1,3 @@
-import kotlin.random.Random
-
 class Magier(var nameM: String, var hpM: Int): Gegner(nameM , hpM) {
 
     private var chemicalBurnUsed = false
@@ -7,13 +5,14 @@ class Magier(var nameM: String, var hpM: Int): Gegner(nameM , hpM) {
     private var howlerUsed = false
     private var hurricaneUsed = false
     private var fireballUsed = false
-    private var summonGolemUsed = false
+    val golemInstance = Golem("Name des Golems", 100)
+
 
 
     init {
         addAction { target -> chemicalBurn(20, target) }
         addAction { target -> curse(target) }
-        addAction { target -> summonGolem(target) }
+        addAction { target -> summonGolem(golemInstance) }
         addAction { target -> fireball(30, target) }
         addAction { target -> hurricane(50, target) }
         addAction { target -> howler(10, target) }
@@ -59,38 +58,31 @@ class Magier(var nameM: String, var hpM: Int): Gegner(nameM , hpM) {
         curseUsed = true
     }
 
-    fun summonGolem(target: Held) {
-        if (!summonGolemUsed) {
-            target.summonGolem(Golem("Golem", 100))
-            println("Der Magier beschwört einen Golem.")
-            summonGolemUsed = true
-        } else {
-            println("Der Golem wurde bereits in dieser Runde beschworen.")
-        }
+    //Magier: wenn ausgeführt, dann setze ich Wert fest, aber diese var mit true von Magier, der Magier weiß ob er beschworen hat aber Golem weiß das nicht
+    fun summonGolem(friend: Golem) {
+      friend.summon()
     }
 
 
     //Ab hier wieder meins:
-    fun randomAttack(): String? {
-        val possibleAttacks = mutableListOf<String>()
-        if (!chemicalBurnUsed) possibleAttacks.add("chemicalBurn")
-        if (!curseUsed) possibleAttacks.add("curse")
-        if (!howlerUsed) possibleAttacks.add("howler")
-        if (!hurricaneUsed) possibleAttacks.add("hurricane")
-        if (!fireballUsed) possibleAttacks.add("fireball")
-        return possibleAttacks.randomOrNull()
+    fun randomAttack(target: Held) {
+        val attackChoice = (1..6).random()
+        when (attackChoice) {
+            1 -> fireball(30 , target)
+            2 -> chemicalBurn(20 , target)
+            3 -> curse(target)
+            4 -> howler(10, target)
+            5 -> hurricane(50 , target)
+            6 -> { summonGolem(golemInstance)
+            }
+            else -> println("Ungültige Auswahl.")
+        }
     }
 
-    override fun resetRound(): Boolean {
-        super.resetRound()
-        chemicalBurnUsed = false
-        curseUsed = false
-        howlerUsed = false
-        hurricaneUsed = false
-        fireballUsed = false
-        return true
-    }
+
 }
+
+
 
 
 

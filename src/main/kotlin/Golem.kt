@@ -42,7 +42,7 @@ class Golem (val nameG: String , val hpG: Int): Gegner(nameG , hpG) {
     }
 
     //Die summon Funktion habe ich eine Inspiration auf Stackoverflow gefunden und auf mich angepasst:
-    fun summon(target: Magier) {
+     fun summon() {
         if (!hasBeenSummoned) {
             println("Der Golem wurde beschworen!")
             hasBeenSummoned = true
@@ -53,39 +53,22 @@ class Golem (val nameG: String , val hpG: Int): Gegner(nameG , hpG) {
 
 
 
-    //Und das hier auch auf Stackoverlow:
+    //Und das hier mit Dennis:
     fun attackOnce(target: Held) {
         if (hasBeenSummoned && !hasAttackedThisRound) {
-            val randomAttack = randomAttack()
-            when (randomAttack) {
-                "push" -> push(5..10, target)
-                "mudBreath" -> mudBreath(15..20, target)
-                "kick" -> kick(10..15, target)
-                "flail" -> flail(5..10, target)
-                else -> println("Der Golem kann nicht angreifen.")
+            val attackChoice = (1..4).random()
+            when (attackChoice) {
+                1 -> push(5..10, target)
+                2 -> mudBreath(15..20, target)
+                3 -> kick(10..15 , target)
+                4 -> flail(10..10, target)
+                else -> println("Ungültige Auswahl.")
             }
+
             hasAttackedThisRound = true
         } else {
             println("Der Golem kann nicht angreifen oder hat bereits in dieser Runde angegriffen.")
         }
-    }
-
-
-    //Ab hier wieder meins:
-
-    fun randomAttack(): String? {
-        val possibleAttacks = mutableListOf<String>()
-        if (pushUsed) possibleAttacks.add("push")
-        if (mudBreathUsed) possibleAttacks.add("mudBreath")
-        if (kickUsed) possibleAttacks.add("kick")
-        if (flailUsed) possibleAttacks.add("flail")
-        return possibleAttacks.randomOrNull()
-    }
-
-    override fun resetRound(): Boolean {
-        super.resetRound()
-        hasAttackedThisRound = false
-        return true
     }
 }
 
