@@ -12,7 +12,6 @@ fun main() {
 
     val golem = Golem("Golem", 100)
     golem.hp = 100
-    golem.summon(magier)
 
     val vampir = Vampir("Barnabas", 80)
     vampir.hp2 = 80
