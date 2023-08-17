@@ -1,27 +1,31 @@
 open class Held ( val name: String, var hp: Int) {
 
-    //Funktion heilen mit Rechnung
+    //Funktion heilen mit Rechnung:
     fun healing(amount: Int) {
         hp += amount
     }
 
+    //Funktion zur Stärkung des Helden:
     fun power(factor: Double) {
         println("$name wird um ${factor * 100}% stärker.")
     }
 
-
+    // Liste von Aktionen, die der Held ausführen kann
     val actions: MutableList<(Gegner) -> Unit> = mutableListOf()
     var isBlocked: Boolean = false
 
+    // Funktion zum Hinzufügen einer Aktion zur Liste
     fun addAction(action: (Gegner) -> Unit) {
         actions.add(action)
     }
 
+    // Standard-Angriffsfunktion des Helden
     open fun attack(target: Gegner) {
         println("$name greift ${target.name} an.")
         useAction(target)
     }
 
+    //Clairvoyance blockt die Aktion des nächsten Gegners
     //Von Chat GPT Anregung geholt und auf meine Bedürfnisse umgewandelt, da ich nicht wusste, wie ich blocken soll:
     fun useAction(target: Gegner) {
         if (actions.isNotEmpty()) {
@@ -36,6 +40,7 @@ open class Held ( val name: String, var hp: Int) {
         }
     }
 
+    //Funktion zum verwenden des Heiltranks:
     open fun useHealing(beutel: Beutel) {
         if (beutel.canUseThisRound() && beutel.canUseHealing()) {
             println("$name verwendet einen Heiltrank und stellt HP um die Hälfte der GesamtHP wieder her.")
@@ -47,6 +52,7 @@ open class Held ( val name: String, var hp: Int) {
         }
     }
 
+    //Funktion zum verwenden eines Vitamins
     open fun useVitamin(beutel: Beutel) {
         if (beutel.canUseVitamin()) {
             println("$name verwendet ein Vitamin und wird dauerhaft um 10% stärker.")
@@ -57,11 +63,12 @@ open class Held ( val name: String, var hp: Int) {
         }
     }
 
-
+//Überprüft ob Held tot ist
     open fun isDead(): Boolean {
         return hp <= 0
     }
 
+    //Funktion für zufälligen Angriff, offene und vererbt weiter an Held
     open fun randomAttack(target: Gegner) {
         println("$name führt eine normale Attacke aus.")
         val damage = 15
