@@ -71,54 +71,43 @@ fun main() {
                 }
             }
 
+
             "beutel" -> {
-                println("Du hast die Möglichkeit, entweder ein Vitamin oder einen Heiltrank zu nutzen. Wähle aus:")
-                println("1. Vitamin")
-                println("2. Heiltrank")
-                val beutelAction = readLine()
+                character.useVitamin(beutel)
+                character.useHealing(beutel)
 
-                when (beutelAction) {
-                    "Vitamin" -> {
-                        character.useVitamin(beutel)
-                    }
+            }
 
-                    "Heiltrank" -> {
-                        character.useHealing(beutel)
-                    }
-
-
-                    else -> {
-                        println("Ungültige Aktion gewählt.")
-                    }
-                }
-
-
-
-                for (held in helden) {
-                    if (!held.isDead()) {
-                        held.randomAttack(magier)
-                    }
-                }
-
-                if (!magier.isDead()) {
-                    val randomTarget = if ((0..1).random() == 0) character else helden.firstOrNull { !it.isDead() }
-
-                    if (randomTarget != null) {
-                        magier.randomAttack(randomTarget)
-                    }
-                } //golem if block machen das er angreifen kann wenn er am leben ist beschworen
-
-
-                if (golem.isDead() && magier.isDead()) {
-                    println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
-                } else if (helden.all { it.isDead() }) {
-                    println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
-                    gameOver = true
-                }
-
-                round++
+            else -> {
+                println("Ungültige Aktion gewählt.")
             }
         }
+
+
+
+        for (held in helden) {
+            if (!held.isDead()) {
+                held.randomAttack(magier)
+            }
+        }
+
+        if (!magier.isDead()) {
+            val randomTarget = if ((0..1).random() == 0) character else helden.firstOrNull { !it.isDead() }
+
+            if (randomTarget != null) {
+                magier.randomAttack(randomTarget)
+            }
+        }
+
+
+        if (golem.isDead() && magier.isDead()) {
+            println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
+        } else if (helden.all { it.isDead() }) {
+            println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
+            gameOver = true
+        }
+
+        round++
     }
 }
 

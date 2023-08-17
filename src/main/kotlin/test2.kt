@@ -1,154 +1,130 @@
-//open class Held(open val name: String, open var hp: Int) {
+fun main() {
+    val helden = mutableListOf<Held>()
 
-//var hasActedThisRound: Boolean = false
-//var hasUsedBeutelThisRound: Boolean = false
+    val oreade = Oreade("Echo", 60)
+    oreade.hp1 = 60
 
-    //fun resetRound() {
-    //    hasActedThisRound = false
-    //    hasUsedBeutelThisRound = false
-   // }
+    val zombie = Zombie("Olivia", 70)
+    zombie.hp3 = 70
 
- //   open fun canActThisRound(): Boolean {
-       // return hasActedThisRound
-  //  }
+    val magier = Magier("Magier Jack", 200)
+    magier.hp = 200
 
-   // open fun markBeutelAsUsedThisRound() {
-  //      hasUsedBeutelThisRound = true
-  //  }
+    val golem = Golem("Golem", 100)
+    golem.hp = 100
 
-  //  open fun markAsActedThisRound() {
-   //     hasActedThisRound = true
-  //  }
+    val vampir = Vampir("Barnabas", 80)
+    vampir.hp2 = 80
 
+    helden.add(oreade)
+    helden.add(zombie)
+    helden.add(vampir)
 
-  //  open fun canUseBeutelThisRound(): Boolean {
-  //      return hasUsedBeutelThisRound && hasActedThisRound
-//    }
+    val beutel = Beutel()
 
-  //  open fun performAction(target: Gegner) {
-    //    if (canActThisRound()) {
-       //     println("$name kämpft gegen ${target.name}.")
-       //     markAsActedThisRound()
-    //    } else {
-   //         println("$name hat bereits in dieser Runde gekämpft.")
-  //      }
- //   }
+    println("Willkommen im Videospiel 'Golden Syntax'.")
 
-  //  fun healing(amount: Int) {
-    //    println("$name wird um $amount HP geheilt.")
-    //    hp += amount
-  //  }
+    println("Willkommen in Golden Syntax! Tauche in eine magische Welt ein, in der du als Held einen epischen Kampf gegen den bösen Magier erlebst. Doch Vorsicht! Er kann einen Golem beschwören. Bist du bereit für diese Herausforderung? Dann zieh deinen Dolch, aktiviere deine Magie und stürze dich in den Kampf. Die Welt von Golden Syntax erwartet dich mit offenen Armen – komm und erlebe, wie du zu einer Legende wirst!")
 
- //   fun useHealing(amount: Int) {
-  //      println("$name verwendet einen Heiltrank und stellt HP um die Hälfte der GesamtHP wieder her.")
-   //     healing(amount)
-  //  }
+    println("Wähle nun deine Gestalt. Es stehen drei zur Auswahl:")
 
- //   fun power(factor: Double) {
-   //     println("$name wird um ${factor * 100}% stärker.")
-  //  }
+    println("Die Oreade ${oreade.name} hat ${oreade.hp1} verfügbare Leben, dafür sind ihre Attacken umso stärker.")
 
-  //  fun useVitamin() {
-   //     println("$name verwendet ein Vitamin und wird dauerhaft um 10% stärker.")
-   //     power(0.1)
-  //  }
+    println("Der Vampir ${vampir.name} hat ${vampir.hp} verfügbare Leben, doch lass dir gesagt sein, der stärkste ist er nicht.")
+
+    println("Der Zombie ${zombie.name} hat ${zombie.hp3} verfügbare Leben, dafür ist sie aber nicht die mutigste.")
+
+    println("Such dir nun aus, welchen der drei du bespielen möchtest. Die flinke Echo? Den blutsaugenden Barnabas? Oder doch lieber die vergammelten Olivia?")
 
 
-  //  val actions: MutableList<(Gegner) -> Unit> = mutableListOf()
+    val characterOfTheUser = readLine()
 
-  //  fun addAction(action: (Gegner) -> Unit) {
-   //     actions.add(action)
- //   }
+    val character = when (characterOfTheUser) {
+        "Echo" -> oreade
+        "Barnabas" -> vampir
+        "Olivia" -> zombie
+        else -> {
+            println("Bitte wähle nur zwischen Echo, Barnabas und Olivia.")
+            return
+        }
+    }
+    helden.remove(character)
 
-  //  fun performActions(target: Gegner) {
-      //  for (action in actions) {
-   //         action(target)
-    //    }
- //   }
-//}
+    println("Du hast ${character.name} als deine Gestalt gewählt. Viel Spaß im Kampf!")
 
+    println("Nimm deinen Platz ein. Der Kampf beginnt!")
 
-//Von Chat GPT Anregung geholt und auf meine Bedürfnisse umgewandelt, da ich nicht wusste, wie ich blocken soll:
-//val actions: MutableList<(Gegner) -> Unit> = mutableListOf()
-//mutableListOf() habe ich aber selbst angelegt.
+    var round = 1
+    var gameOver = false
 
-//Ab hier dann wieder Chat GPT:
-//var isBlocked: Boolean = false
+    while (!gameOver) {
+        println("♥ ♥ ♥ ♥ ♥ ♥ Runde $round ♥ ♥ ♥ ♥ ♥ ♥")
 
-//fun addAction(action: (Gegner) -> Unit) {
- //   actions.add(action)
-//}
+        println("${character.name} kann entweder angreifen oder den Beutel nutzen. Wähle angreifen oder beutel.")
+        val heldAction = readLine()
 
-//fun useAction(target: Gegner) {
-  //  if (actions.isNotEmpty()) {
-    //    val action = actions[0]
-    //    if (isBlocked) {
-     //       println("Echo ist geschützt und blockt die nächste Aktion.")
-      //      isBlocked = false
-      //  } else {
-    //        action(target)
-     //   }
-     //   actions.removeAt(0)
-//}
+        when (heldAction) {
+            "angreifen" -> {
 
-//open fun useHealing() {
-//    val beutel = Beutel()
- //   if (beutel.canUseThisRound() && beutel.canUseHealing()) {
-  //      println("$name verwendet einen Heiltrank und stellt HP um die Hälfte der GesamtHP wieder her.")
-  //      healing(hp / 2)
-  //      beutel.markAsUsedThisRound()
-   //     beutel.remainingHealingPotions--
-  //  } else {
-  //      println("Der Heiltrank kann in dieser Runde nicht mehr verwendet werden.")
- //   }
-//}
+                if (!character.isDead()) {
+                    character.attack(magier)
+                }
+            }
 
-//open fun useVitamin() {
-  //  val beutel = Beutel()
-  //  if (beutel.canUseVitamin()) {
-    //    println("$name verwendet ein Vitamin und wird dauerhaft um 10% stärker.")
-  //      power(0.1)
- //       beutel.hasUsedVitamin = true
- //   } else {
-  //      println("Das Vitamin kann nicht mehr verwendet werden.")
- //   }
-//}
+            "beutel" -> {
+                println("Du hast die Möglichkeit, entweder ein Vitamin oder einen Heiltrank zu nutzen. Wähle aus:")
+                println("1. Vitamin")
+                println("2. Heiltrank")
+                val beutelAction = readLine()
+
+                when (beutelAction) {
+                    "Vitamin" -> {
+                        character.useVitamin(beutel)
+                    }
+
+                    "Heiltrank" -> {
+                        character.useHealing(beutel)
+                    }
 
 
-//open fun isDead(): Boolean {
- //   return hp <= 0
-//}
-
-//open fun randomAttack(target: Gegner) {
-  //  println("$name führt eine normale Attacke aus.")
-  //  val damage = 15
-   // target.hp -= damage
-  //  println("$name fügt ${target.name} $damage Schaden zu.")
-//}
-
-
-// Von IJ verbessert, wo ich nicht ganz konform bin:
-//fun power(d: Double) {
-
-//}
-
-// Von IJ verbessert, wo ich nicht ganz konform bin:
-//fun healing(i: Int) {
-
-//}
-
-// Von IJ verbessert, ich bin nicht so einverstanden, aber fand auch nach 30 min keinen anderen Weg:
-//fun summonGolem(golem: Golem) {}
+                    else -> {
+                        println("Ungültige Aktion gewählt.")
+                    }
+                }
 
 
 
+                for (held in helden) {
+                    if (!held.isDead()) {
+                        held.randomAttack(magier)
+                    }
+                }
+
+                if (!magier.isDead()) {
+                    val randomTarget = if ((0..1).random() == 0) character else helden.firstOrNull { !it.isDead() }
+
+                    if (randomTarget != null) {
+                        magier.randomAttack(randomTarget)
+                    }
+                }
+
+                // if (golem.hasBeenSummoned && !golem.isDead()) {
+                // golem.attackOnce()
+                // }
 
 
+                if (golem.isDead() && magier.isDead()) {
+                    println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
+                } else if (helden.all { it.isDead() }) {
+                    println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
+                    gameOver = true
+                }
 
-
-
-
-
+                round++
+            }
+        }
+    }
+}
 
 
 
