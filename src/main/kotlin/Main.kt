@@ -65,25 +65,36 @@ fun main() {
 
         when (heldAction) {
             "angreifen" -> {
-
                 if (!character.isDead()) {
                     character.attack(magier)
                 }
             }
 
-
             "beutel" -> {
-                character.useVitamin(beutel)
-                character.useHealing(beutel)
+                println("Du hast die Möglichkeit, entweder ein Vitamin oder einen Heiltrank zu nutzen. Wähle aus:")
+                println("1. Vitamin")
+                println("2. Heiltrank")
+                val beutelAction = readLine()
 
+                when (beutelAction) {
+                    "1" -> {
+                        character.useVitamin(beutel)
+                    }
+
+                    "2" -> {
+                        character.useHealing(beutel)
+                    }
+
+                    else -> {
+                        println("Ungültige Aktion gewählt.")
+                    }
+                }
             }
 
             else -> {
                 println("Ungültige Aktion gewählt.")
             }
         }
-
-
 
         for (held in helden) {
             if (!held.isDead()) {
@@ -95,13 +106,17 @@ fun main() {
             val randomTarget = if ((0..1).random() == 0) character else helden.firstOrNull { !it.isDead() }
 
             if (randomTarget != null) {
-                magier.randomAttack(randomTarget)
+                if (golem.hasBeenSummoned && !golem.isDead()) {
+                    golem.attackOnce(randomTarget) // Hier ruft man attackOnce für den Golem auf
+                } else {
+                    magier.randomAttack(randomTarget) // Ansonsten führt der Magier den Angriff aus
+                }
             }
         }
 
-
         if (golem.isDead() && magier.isDead()) {
             println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
+            gameOver = true
         } else if (helden.all { it.isDead() }) {
             println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
             gameOver = true

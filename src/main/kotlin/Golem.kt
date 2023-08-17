@@ -72,6 +72,4 @@ class Golem (val nameG: String , val hpG: Int): Gegner(nameG , hpG) {
     }
 }
 
-// if (golem.hasBeenSummoned && !golem.isDead()) {
-// golem.attackOnce()
-// }
+
