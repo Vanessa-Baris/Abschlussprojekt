@@ -6,9 +6,9 @@ class Oreade(var name1: String, var hp1: Int) : Held(name1, hp1) {
     var treeTrunkLongThrowUsed = false
 
 
-    fun attack(target: Gegner) {
+    override fun attack(target: Gegner) {
         println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-4 ein.")
-        var attackChoice = readln().toIntOrNull()
+        var attackChoice = readLine()?.toIntOrNull()
 
         when (attackChoice) {
             1 -> blossomMagic(50..75, target)

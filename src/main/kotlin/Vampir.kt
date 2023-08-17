@@ -4,9 +4,9 @@ class Vampir(var name2: String, var hp2: Int) : Held(name2, hp2) {
     var biteUsed = false
     var manipulationUsed = false
     var scratchUsed = false
-     fun attack(target: Gegner) {
+    override fun attack(target: Gegner) {
         println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-4 ein.")
-        var attackChoice = readln().toIntOrNull()
+        var attackChoice = readLine()?.toIntOrNull()
 
         when (attackChoice) {
             1 -> bite(44..50, target)
@@ -18,6 +18,7 @@ class Vampir(var name2: String, var hp2: Int) : Held(name2, hp2) {
             }
         }
     }
+
     init {
         addAction { target -> bite(44..50, target) }
         addAction { target -> camoCape(5..10, target) }

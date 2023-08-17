@@ -55,25 +55,29 @@ fun main() {
     while (!gameOver) {
         println("♥ ♥ ♥ ♥ ♥ ♥ Runde $round ♥ ♥ ♥ ♥ ♥ ♥")
 
-        if (!character.isDead() && !character.hasActedThisRound && !character.canUseBeutelThisRound()) {
-            println("${character.name} kann entweder angreifen oder den Beutel nutzen. Wähle angreifen oder beutel.")
-            val chosenAction = readln()
+        for (held in helden) {
+            if (!held.isDead() && !held.hasActedThisRound && !held.canUseBeutelThisRound()) {
+                println("${held.name} kann entweder angreifen oder den Beutel nutzen. Wähle angreifen oder beutel.")
+                val heldAction = readLine()
 
-            when (chosenAction) {
-                "angreifen" -> {
-                    val target = magier
-                    character.attack(target)
-                    character.markAsActedThisRound()
-                }
+                when (heldAction) {
+                    "angreifen" -> {
+                        val target = magier
+                        held.performAction(target)
+                        held.markAsActedThisRound()
+                    }
 
-                "beutel" -> {
-                    beutel.useBag()
-                    character.markAsActedThisRound()
-                }
+                    "beutel" -> {
+                        beutel.useBag()
+                        held.markAsActedThisRound()
+                    }
 
-                else -> {
-                    println("Ungültige Aktion gewählt.")
+                    else -> {
+                        println("Ungültige Aktion gewählt.")
+                    }
                 }
+            } else {
+                held.resetRound()
             }
         }
 
@@ -107,14 +111,6 @@ fun main() {
             }
         }
 
-        //Von ChatGPT:
-        helden.filterIsInstance<Gegner>().forEach { gegner ->
-            if (!gegner.isDead() && !gegner.hasActedThisRound) {
-                gegner.attack(magier)
-                gegner.markAsActedThisRound()
-            }
-        }
-
         if (golem.isDead() && magier.isDead()) {
             println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
             gameOver = true
@@ -126,3 +122,5 @@ fun main() {
         round++
     }
 }
+
+

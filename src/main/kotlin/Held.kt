@@ -49,6 +49,11 @@ open class Held (open val name: String, open var hp: Int) {
         actions.add(action)
     }
 
+    open fun attack(target: Gegner) {
+        println("$name greift ${target.name} an.")
+        useAction(target)
+    }
+
     //Von Chat GPT Anregung geholt und auf meine Bedürfnisse umgewandelt, da ich nicht wusste, wie ich blocken soll:
     fun useAction(target: Gegner) {
         if (actions.isNotEmpty()) {
@@ -105,7 +110,5 @@ open class Held (open val name: String, open var hp: Int) {
         golem.attackOnce(this)
     }
 
-    fun attack(target: Magier) {
 
-    }
 }
