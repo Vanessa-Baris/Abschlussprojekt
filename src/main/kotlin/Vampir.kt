@@ -30,25 +30,28 @@ class Vampir(var name2: String, var hp2: Int) : Held(name2, hp2) {
         addAction { target -> scratch(20..35, target) }
     }
 
-
+//Funktion bite
     fun bite(damage: IntRange, target: Gegner) {
         target.hp -= damage.random()
         biteUsed = true
         println("$name2 beißt ${target.name} in den Hals und verursacht $damage Schaden.")
     }
 
+    //Funktion Camo Cape
    fun camoCape(damage: IntRange, target: Gegner) {
         target.hp -= damage.random()
         camoUsed = true
         println("$name2 wirft sich den Tarnumhang über und zwickt ${target.name}. Dabei entsteht $damage Schaden.")
     }
 
+    //Funktion Manipulation
     fun manipulation(damage: IntRange, target: Gegner) {
         target.hp -= damage.random()
         manipulationUsed = true
         println("$name2 manipuliert ${target.name} und verursacht $damage Schaden.")
     }
 
+    //Funktion Scratch
     fun scratch(damage: IntRange, target: Gegner) {
         target.hp -= damage.random()
         scratchUsed = true
