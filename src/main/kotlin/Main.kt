@@ -20,7 +20,6 @@ fun main() {
     helden.add(zombie)
     helden.add(vampir)
 
-    val beutel1 = Beutel()
     val beutel = Beutel()
 
     println("Willkommen im Videospiel 'Golden Syntax'.")
@@ -71,13 +70,11 @@ fun main() {
                     character.attack(magier)
                 }
             }
+//mit vitaminen auch machen, an useHealing orientieren
 
-
-            "beutel" -> {
-                beutel.useBag()
+            "beutel" -> {  //when oder if einbauen print einbauen und fragen was er nutzen will
                 character.useVitamin()
                 character.useHealing(beutel)
-                character.useHealing(beutel1)
 
             }
 
@@ -90,7 +87,7 @@ fun main() {
 
         for (held in helden) {
             if (!held.isDead()) {
-                held.randomAttack(magier)
+                held.randomAttack(magier , beutel)
             }
         }
 
@@ -100,7 +97,7 @@ fun main() {
             if (randomTarget != null) {
                 magier.randomAttack(randomTarget)
             }
-        }
+        } //golem if block machen das er angreifen kann wenn er am leben ist beschworen
 
 
         if (golem.isDead() && magier.isDead()) {

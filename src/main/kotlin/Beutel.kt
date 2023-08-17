@@ -16,15 +16,6 @@ class Beutel {
         hasUsedThisRound = true
     }
 
-    fun useBag() {
-        if (canUseThisRound()) {
-            println("Der Beutel wurde genutzt.")
-            markAsUsedThisRound()
-        } else {
-            println("Der Beutel wurde bereits in dieser Runde genutzt.")
-        }
-    }
-
 
 
     //Von IJ:

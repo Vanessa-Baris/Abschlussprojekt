@@ -52,7 +52,7 @@ class Zombie(var name3: String, var hp3: Int) : Held(name3, hp3) {
         println("$name3 wird das alles zu viel. $name3 torkelt weg um zu fliehen und setzt eine Runde aus.")
     }
 
-    override fun randomAttack(target: Gegner) {
+    override fun randomAttack(target: Gegner , beutel: Beutel) {
         val attackChoice = (1..4).random()
         when (attackChoice) {
             1 -> push(30..33, target)

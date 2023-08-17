@@ -62,7 +62,7 @@ open class Held ( val name: String, var hp: Int) {
         return hp <= 0
     }
 
-    open fun randomAttack(target: Gegner) {
+    open fun randomAttack(target: Gegner , beutel: Beutel) {
         println("$name führt eine normale Attacke aus.")
         val damage = 15
         target.hp -= damage

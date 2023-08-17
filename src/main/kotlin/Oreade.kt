@@ -58,7 +58,7 @@ class Oreade(var name1: String, var hp1: Int) : Held(name1, hp1) {
         println("$name1 wirft einen Baumstamm und trifft ${target.name}. Es verursacht $damage Schaden.")
     }
 
-    override fun randomAttack(target: Gegner) {
+    override fun randomAttack(target: Gegner , beutel: Beutel) {
         val attackChoice = (1..4).random()
         when (attackChoice) {
             1 -> blossomMagic(50..75, target)

@@ -1,31 +1,5 @@
 open class Gegner(var name: String, var hp: Int) {
 
-     var hasActedThisRound: Boolean = false
-
-
-    open fun resetRound(): Boolean {
-        hasActedThisRound = false
-        return true
-    }
-
-    fun canActThisRound(): Boolean {
-        return hasActedThisRound
-    }
-
-    fun markAsActedThisRound(): Boolean {
-        hasActedThisRound = true
-        return true
-    }
-
-    fun performAction(target: Held) {
-        if (canActThisRound()) {
-            println("$name kämpft gegen ${target.name}.")
-            markAsActedThisRound()
-        } else {
-            println("$name hat bereits in dieser Runde gekämpft.")
-        }
-    }
-
     val actions: MutableList<(Held) -> Unit> = mutableListOf()
 
     fun addAction(action: (Held) -> Unit) {
@@ -36,10 +10,7 @@ open class Gegner(var name: String, var hp: Int) {
         return hp <= 0
     }
 
-    //Von IJ:
-    fun attack(magier: Magier) {
 
-    }
 }
 
 
