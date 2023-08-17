@@ -1,11 +1,12 @@
 class Zombie(var name3: String, var hp3: Int) : Held(name3, hp3) {
 
+    // Variablen, um den Einsatz der Attacken zu verfolgen
     var pushUsed = false
     var huntUsed = false
     var nibbleUsed = false
     var staggeringAwayUsed = false
 
-
+    // Überschreibt die attack-Methode der Elternklasse Held
     override fun attack(target: Gegner) {
         println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-4 ein.")
         var attackChoice = readLine()?.toIntOrNull()
@@ -21,6 +22,7 @@ class Zombie(var name3: String, var hp3: Int) : Held(name3, hp3) {
         }
     }
 
+    // Initialisierung der addAction für den Helden Zombie Attacken hinzufügt
     init {
         addAction { target -> push(30..33, target) }
         addAction { target -> hunt(40..50, target) }
@@ -28,30 +30,35 @@ class Zombie(var name3: String, var hp3: Int) : Held(name3, hp3) {
         addAction { target -> staggeringAway(0, target) }
     }
 
+    //push Funktion
     fun push(damage: IntRange, target: Gegner) {
         target.hp -= damage.random()
         pushUsed = true
         println("$name3 schlägt ${target.name} und verursacht $damage Schaden.")
     }
 
+    //hunt Funktion
     fun hunt(damage: IntRange, target: Gegner) {
         target.hp -= damage.random()
         huntUsed = true
         println("$name3 jagt ${target.name} hinterher und verursacht $damage Schaden.")
     }
 
+    //nibble Funktion
     fun nibble(damage: IntRange, target: Gegner) {
         target.hp -= damage.random()
         nibbleUsed = true
         println("$name3 knabbert ${target.name} mit großen Genuss an und verursacht $damage Schaden.")
     }
 
+    //Staggering Away Funktion
     fun staggeringAway(damage: Int, target: Gegner) {
         target.hp -= damage
         staggeringAwayUsed = true
         println("$name3 wird das alles zu viel. $name3 torkelt weg um zu fliehen und setzt eine Runde aus.")
     }
 
+    //Überschreiben Elternklasse randomAttack mit Zombie Angriff, wenn man nicht ausgewählt hat in Main
     override fun randomAttack(target: Gegner) {
         val attackChoice = (1..4).random()
         when (attackChoice) {
