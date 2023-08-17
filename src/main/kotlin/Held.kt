@@ -1,7 +1,7 @@
 open class Held ( val name: String, var hp: Int) {
 
+    //Funktion heilen mit Rechnung
     fun healing(amount: Int) {
-        println("$name wird um $amount HP geheilt.")
         hp += amount
     }
 
