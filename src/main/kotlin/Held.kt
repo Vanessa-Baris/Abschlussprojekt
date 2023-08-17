@@ -47,8 +47,7 @@ open class Held ( val name: String, var hp: Int) {
         }
     }
 
-    open fun useVitamin() {
-        val beutel = Beutel()
+    open fun useVitamin(beutel: Beutel) {
         if (beutel.canUseVitamin()) {
             println("$name verwendet ein Vitamin und wird dauerhaft um 10% stärker.")
             power(0.1)
@@ -58,11 +57,12 @@ open class Held ( val name: String, var hp: Int) {
         }
     }
 
+
     open fun isDead(): Boolean {
         return hp <= 0
     }
 
-    open fun randomAttack(target: Gegner , beutel: Beutel) {
+    open fun randomAttack(target: Gegner) {
         println("$name führt eine normale Attacke aus.")
         val damage = 15
         target.hp -= damage
