@@ -1,6 +1,8 @@
 fun main() {
+    //Erstelle Held Liste
     val helden = mutableListOf<Held>()
 
+    //Instanzen der Charaktere Held und Gegner
     val oreade = Oreade("Echo", 60)
     oreade.hp1 = 60
 
@@ -16,15 +18,16 @@ fun main() {
     val vampir = Vampir("Barnabas", 80)
     vampir.hp2 = 80
 
+    //Adden der Helden in die Liste
     helden.add(oreade)
     helden.add(zombie)
     helden.add(vampir)
 
+    //Instanz von Beutel
     val beutel = Beutel()
 
+    //Einführung, Heldenvorstellung
     println("Willkommen im Videospiel 'Golden Syntax'.")
-
-    println("Willkommen in Golden Syntax! Tauche in eine magische Welt ein, in der du als Held einen epischen Kampf gegen den bösen Magier erlebst. Doch Vorsicht! Er kann einen Golem beschwören. Bist du bereit für diese Herausforderung? Dann zieh deinen Dolch, aktiviere deine Magie und stürze dich in den Kampf. Die Welt von Golden Syntax erwartet dich mit offenen Armen – komm und erlebe, wie du zu einer Legende wirst!")
 
     println("Wähle nun deine Gestalt. Es stehen drei zur Auswahl:")
 
@@ -36,7 +39,7 @@ fun main() {
 
     println("Such dir nun aus, welchen der drei du bespielen möchtest. Die flinke Echo? Den blutsaugenden Barnabas? Oder doch lieber die vergammelten Olivia?")
 
-
+//User wählt Character aus mit Vorname:
     val characterOfTheUser = readLine()
 
     val character = when (characterOfTheUser) {
@@ -47,7 +50,7 @@ fun main() {
             println("Bitte wähle nur zwischen Echo, Barnabas und Olivia.")
             return
         }
-    }
+    } //Den ausgewählten Chara nehme ich raus aus der Held Liste
     helden.remove(character)
 
     println("Du hast ${character.name} als deine Gestalt gewählt. Viel Spaß im Kampf!")
@@ -56,7 +59,7 @@ fun main() {
 
     var round = 1
     var gameOver = false
-
+ //Kampfschleife und Spieleraktionen verarbeiten
     while (!gameOver) {
         println("♥ ♥ ♥ ♥ ♥ ♥ Runde $round ♥ ♥ ♥ ♥ ♥ ♥")
 
@@ -95,13 +98,13 @@ fun main() {
                 println("Ungültige Aktion gewählt.")
             }
         }
-
+        // Angriffe der Helden auf den Magier
         for (held in helden) {
             if (!held.isDead()) {
                 held.randomAttack(magier)
             }
         }
-
+        // Entscheiden, wer den Angriff ausführt: Golem oder Magier, nur wenn Golem beschworen ist, ansonsten Magier
         if (!magier.isDead()) {
             val randomTarget = if ((0..1).random() == 0) character else helden.firstOrNull { !it.isDead() }
 
@@ -113,7 +116,7 @@ fun main() {
                 }
             }
         }
-
+        // Überprüfen, ob das Spiel vorbei ist
         if (golem.isDead() && magier.isDead()) {
             println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
             gameOver = true
