@@ -105,6 +105,7 @@ fun main() {
             }
         }
 
+        //Doppelung, sinnvoll das raus zu machen? Hauptchara greift oben ja schon an:
         if (!character.isDead() && character.hasActedThisRound) {
             if (character is Oreade || character is Vampir || character is Zombie) {
                 character.attack(magier)
