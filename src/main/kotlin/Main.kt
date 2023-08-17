@@ -87,7 +87,7 @@ fun main() {
                     }
                 }
 
-//
+
 
         for (held in helden) {
             if (!held.isDead()) {
@@ -96,10 +96,10 @@ fun main() {
         }
 
         if (!magier.isDead()) {
-            for (held in helden) { //Fehler, wenn Magier angreift, dann zieht er sich aus Karton raus Helden, meinen kann er nicht angreifen, da er nicht in Held ist
-                if (!held.isDead()) {
-                    magier.randomAttack(held)
-                }
+            val randomTarget = if ((0..1).random() == 0) character else helden.firstOrNull { !it.isDead() }
+
+            if (randomTarget != null) {
+                magier.randomAttack(randomTarget)
             }
         }
 
