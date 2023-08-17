@@ -20,6 +20,7 @@ fun main() {
     helden.add(zombie)
     helden.add(vampir)
 
+    val beutel1 = Beutel()
     val beutel = Beutel()
 
     println("Willkommen im Videospiel 'Golden Syntax'.")
@@ -60,32 +61,30 @@ fun main() {
     while (!gameOver) {
         println("♥ ♥ ♥ ♥ ♥ ♥ Runde $round ♥ ♥ ♥ ♥ ♥ ♥")
 
-                 println("${character.name} kann entweder angreifen oder den Beutel nutzen. Wähle angreifen oder beutel.")
-                val heldAction = readLine()
+        println("${character.name} kann entweder angreifen oder den Beutel nutzen. Wähle angreifen oder beutel.")
+        val heldAction = readLine()
 
-                when (heldAction) {
-                    "angreifen" -> {
+        when (heldAction) {
+            "angreifen" -> {
 
-                        //immer das gleiche attack, könnte man anpassen minimieren
-                        if (!character.isDead()) {
-                            if (character is Oreade) {
-                                character.attack(magier)
-                            } else if (character is Vampir) {
-                                character.attack(magier)
-                            } else if (character is Zombie) {
-                                character.attack(magier)
-                            }
-                        }
-                    }
-
-                    "beutel" -> {
-                        beutel.useBag()
-                    }
-
-                    else -> {
-                        println("Ungültige Aktion gewählt.")
-                    }
+                if (!character.isDead()) {
+                    character.attack(magier)
                 }
+            }
+
+
+            "beutel" -> {
+                beutel.useBag()
+                character.useVitamin()
+                character.useHealing(beutel)
+                character.useHealing(beutel1)
+
+            }
+
+            else -> {
+                println("Ungültige Aktion gewählt.")
+            }
+        }
 
 
 
@@ -104,17 +103,9 @@ fun main() {
         }
 
 
-
-        //Doppelung, sinnvoll das raus zu machen? Hauptchara greift oben ja schon an:
-      //  if (!character.isDead() && character.hasActedThisRound) {
-        //    if (character is Oreade || character is Vampir || character is Zombie) {
-        //        character.attack(magier)
-        //    }
-            // }
-
-       if (golem.isDead() && magier.isDead()) {
-           println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
-             } else if (helden.all { it.isDead() }) {
+        if (golem.isDead() && magier.isDead()) {
+            println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
+        } else if (helden.all { it.isDead() }) {
             println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
             gameOver = true
         }
@@ -122,5 +113,6 @@ fun main() {
         round++
     }
 }
+
 
 

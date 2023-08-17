@@ -58,7 +58,6 @@ class Magier(var nameM: String, var hpM: Int): Gegner(nameM , hpM) {
         curseUsed = true
     }
 
-    //Magier: wenn ausgeführt, dann setze ich Wert fest, aber diese var mit true von Magier, der Magier weiß ob er beschworen hat aber Golem weiß das nicht
     fun summonGolem(friend: Golem) {
       friend.summon()
     }

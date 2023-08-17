@@ -1,36 +1,4 @@
-open class Held (open val name: String, open var hp: Int) {
-
-    var hasActedThisRound: Boolean = false
-    var hasUsedBeutelThisRound: Boolean = false
-    fun resetRound() {
-        hasActedThisRound = false
-        hasUsedBeutelThisRound = false
-    }
-
-    open fun canActThisRound(): Boolean {
-        return hasActedThisRound
-    }
-
-    open fun markBeutelAsUsedThisRound() {
-        hasUsedBeutelThisRound = true
-    }
-
-    open fun markAsActedThisRound() {
-        hasActedThisRound = true
-    }
-
-    open fun canUseBeutelThisRound(): Boolean {
-        return hasUsedBeutelThisRound && hasActedThisRound
-    }
-
-    open fun performAction(target: Gegner) {
-        if (canActThisRound()) {
-            println("$name kämpft gegen ${target.name}.")
-            markAsActedThisRound()
-        } else {
-            println("$name hat bereits in dieser Runde gekämpft.")
-        }
-    }
+open class Held ( val name: String, var hp: Int) {
 
     fun healing(amount: Int) {
         println("$name wird um $amount HP geheilt.")
@@ -68,8 +36,7 @@ open class Held (open val name: String, open var hp: Int) {
         }
     }
 
-    open fun useHealing() {
-        val beutel = Beutel()
+    open fun useHealing(beutel: Beutel) {
         if (beutel.canUseThisRound() && beutel.canUseHealing()) {
             println("$name verwendet einen Heiltrank und stellt HP um die Hälfte der GesamtHP wieder her.")
             healing(hp / 2)
