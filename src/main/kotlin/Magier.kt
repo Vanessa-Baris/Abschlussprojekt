@@ -36,16 +36,18 @@ class Magier(var nameM: String, var hpM: Int): Gegner(nameM , hpM) {
 
     //Funktion hurricane
     fun hurricane(damage: Int, target: Held) {
-        target.hp -= 50
+        val damageAmount = damage
+        target.hp -= damageAmount
         hurricaneUsed = true
-        println("Orkan trifft auf ${target.name} und verursacht $damage Schaden.")
+        println("Orkan trifft auf ${target.name} und verursacht $damageAmount Schaden.")
     }
 
     //Funktion howler
     fun howler(damage: Int, target: Held) {
-        target.hp -= 10
+        val damageAmount = damage
+        target.hp -= damageAmount
         howlerUsed = true
-        println("Der Magier Jack heult ohrenbetäubend und trifft ${target.name}, Er macht $damage Schaden.")
+        println("Der Magier Jack heult ohrenbetäubend und trifft ${target.name}, Er macht $damageAmount Schaden.")
     }
 
     //Fluch Angriff, zieht pro Runde 10% Hp ab bis sich der Hp auf 20% auf reduziert
@@ -56,7 +58,8 @@ class Magier(var nameM: String, var hpM: Int): Gegner(nameM , hpM) {
         val damage = (maxHp * 0.1).toInt()
 
         val remainingHp = target.hp - minHpValue
-        //coerceAtLeast von DerPunkt in Karlsruhe
+        //coerceAtLeast von DerPunkt in
+        //berechnet die Anzahl Runden die man braucht, damit verbleibende HP des Ziels wegen Fluchschadens auf 0 zu reduzieren, wobei Corce wird, damit mindestens 1 Runde dauert.
         val roundsToReachMinHp = (remainingHp / damage).coerceAtLeast(1)
 
         target.hp -= damage * roundsToReachMinHp

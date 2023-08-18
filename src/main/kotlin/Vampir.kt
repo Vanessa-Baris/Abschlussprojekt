@@ -32,30 +32,35 @@ class Vampir(var name2: String, var hp2: Int) : Held(name2, hp2) {
 
 //Funktion bite
     fun bite(damage: IntRange, target: Gegner) {
-        target.hp -= damage.random()
+        val damageAmount = damage.random()
+        target.hp -= damageAmount
         biteUsed = true
-        println("$name2 beißt ${target.name} in den Hals und verursacht $damage Schaden.")
-    }
+        println("$name2 beißt ${target.name} in den Hals und verursacht $damageAmount Schaden.")
+}
+
 
     //Funktion Camo Cape
    fun camoCape(damage: IntRange, target: Gegner) {
-        target.hp -= damage.random()
+        val damageAmount = damage.random()
+        target.hp -= damageAmount
         camoUsed = true
-        println("$name2 wirft sich den Tarnumhang über und zwickt ${target.name}. Dabei entsteht $damage Schaden.")
+        println("$name2 wirft sich den Tarnumhang über und zwickt ${target.name}. Dabei entsteht $damageAmount Schaden.")
     }
 
     //Funktion Manipulation
     fun manipulation(damage: IntRange, target: Gegner) {
-        target.hp -= damage.random()
+        val damageAmount = damage.random()
+        target.hp -= damageAmount
         manipulationUsed = true
-        println("$name2 manipuliert ${target.name} und verursacht $damage Schaden.")
+        println("$name2 manipuliert ${target.name} und verursacht $damageAmount Schaden.")
     }
 
     //Funktion Scratch
     fun scratch(damage: IntRange, target: Gegner) {
-        target.hp -= damage.random()
+        val damageAmount = damage.random()
+        target.hp -= damageAmount
         scratchUsed = true
-        println("$name2 kratzt ${target.name} und verursacht $damage Schaden.")
+        println("$name2 kratzt ${target.name} und verursacht $damageAmount Schaden.")
     }
 
     //Überschreiben Elternklasse randomAttack mit Vampir Angriff, wenn man nicht ausgewählt hat in Main

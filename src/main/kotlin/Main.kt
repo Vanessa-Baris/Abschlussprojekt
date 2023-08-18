@@ -57,7 +57,9 @@ fun main() {
 
     println("Nimm deinen Platz ein. Der Kampf beginnt!")
 
+    //speichert Runde von Spiel, immer wenn alle angegriffen haben (durch meine Kampflogik) erhöht sich die Runde
     var round = 1
+    //Hier zeigt an ob Runde beendet ist oder nicht, Nur wenn Wert auf true gesetzt ist, wenn false geht Spiel weiter
     var gameOver = false
  //Kampfschleife und Spieleraktionen verarbeiten
     while (!gameOver) {
@@ -80,11 +82,11 @@ fun main() {
                 val beutelAction = readLine()
 
                 when (beutelAction) {
-                    "1" -> {
+                    "Vitamin" -> {
                         character.useVitamin(beutel)
                     }
-
-                    "2" -> {
+//Anmerkung: bei mir kann nur der gewählte Chara auf den Beutel zugreifen, nicht die nicht vom User gewählten Helden
+                    "Heiltrank" -> {
                         character.useHealing(beutel)
                     }
 
@@ -116,10 +118,12 @@ fun main() {
                 }
             }
         }
-        // Überprüfen, ob das Spiel vorbei ist
+        // Überprüfen, ob das Spiel vorbei ist:     // Überprüfen, ob sowohl der Golem als auch der Magier besiegt wurden.
         if (golem.isDead() && magier.isDead()) {
             println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
+            //Dann wird Wert auf true gesetzt bei GameOver
             gameOver = true
+            // Überprüfen, ob alle Helden besiegt wurden oder ihre Hp unter 0 fallen, dann wird auch auf true gesetzt
         } else if (helden.all { it.isDead() }) {
             println("Alle Helden sind besiegt. Der Magier hat gesiegt. Das Spiel ist fertig.")
             gameOver = true

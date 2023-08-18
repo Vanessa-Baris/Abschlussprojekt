@@ -22,28 +22,32 @@ class Golem (val nameG: String , val hpG: Int): Gegner(nameG , hpG) {
 
     //Push Funktion
     fun push(damage: IntRange, target: Held) {
-        target.hp -= damage.random()
+        val damageAmount = damage.random()
+        target.hp -= damageAmount
         pushUsed = true
         println("$nameG stößt ${target.name} weg und verursacht $damage Schaden.")
     }
 
     //mudBreath Funktion
     fun mudBreath(damage: IntRange, target: Held) {
-        target.hp -= damage.random()
+        val damageAmount = damage.random()
+        target.hp -= damageAmount
         mudBreathUsed = true
         println("$nameG wirft sich den Tarnumhang über und zwickt ${target.name}. Dabei entsteht $damage Schaden.")
     }
 
     //Kick Funktion
     fun kick(damage: IntRange, target: Held) {
-        target.hp -= damage.random()
+        val damageAmount = damage.random()
+        target.hp -= damageAmount
         kickUsed = true
         println("$nameG manipuliert ${target.name} und verursacht $damage Schaden.")
     }
 
     //Flail Funktion
     fun flail(damage: IntRange, target: Held) {
-        target.hp -= damage.random()
+        val damageAmount = damage.random()
+        target.hp -= damageAmount
         flailUsed = true
         println("$nameG kratzt ${target.name} und verursacht $damage Schaden.")
     }
@@ -62,7 +66,7 @@ class Golem (val nameG: String , val hpG: Int): Gegner(nameG , hpG) {
     // Funktion für den Angriff des Golems auf einen Held
     //Und das hier mit Dennis:
     fun attackOnce(target: Held) {
-        if (hasBeenSummoned && !hasAttackedThisRound) {
+        if (hasBeenSummoned && !hasAttackedThisRound) { //hier überprüft ob bereits beschworen und schon agiert in der Runde
             val attackChoice = (1..4).random()
             when (attackChoice) {
                 1 -> push(5..10, target)

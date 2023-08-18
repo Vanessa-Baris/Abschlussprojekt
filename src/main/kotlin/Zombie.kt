@@ -32,28 +32,30 @@ class Zombie(var name3: String, var hp3: Int) : Held(name3, hp3) {
 
     //push Funktion
     fun push(damage: IntRange, target: Gegner) {
-        target.hp -= damage.random()
+        val damageAmount = damage.random()
+        target.hp -= damageAmount
         pushUsed = true
-        println("$name3 schlägt ${target.name} und verursacht $damage Schaden.")
+        println("$name3 schlägt ${target.name} und verursacht $damageAmount Schaden.")
     }
 
     //hunt Funktion
     fun hunt(damage: IntRange, target: Gegner) {
-        target.hp -= damage.random()
+        val damageAmount = damage.random()
+        target.hp -= damageAmount
         huntUsed = true
-        println("$name3 jagt ${target.name} hinterher und verursacht $damage Schaden.")
+        println("$name3 jagt ${target.name} hinterher und verursacht $damageAmount Schaden.")
     }
 
     //nibble Funktion
     fun nibble(damage: IntRange, target: Gegner) {
-        target.hp -= damage.random()
+        val damageAmount = damage.random()
+        target.hp -= damageAmount
         nibbleUsed = true
-        println("$name3 knabbert ${target.name} mit großen Genuss an und verursacht $damage Schaden.")
+        println("$name3 knabbert ${target.name} mit großen Genuss an und verursacht $damageAmount Schaden.")
     }
 
     //Staggering Away Funktion
     fun staggeringAway(damage: Int, target: Gegner) {
-        target.hp -= damage
         staggeringAwayUsed = true
         println("$name3 wird das alles zu viel. $name3 torkelt weg um zu fliehen und setzt eine Runde aus.")
     }

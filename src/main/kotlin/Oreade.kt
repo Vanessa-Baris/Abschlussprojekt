@@ -31,9 +31,10 @@ class Oreade(var name1: String, var hp1: Int) : Held(name1, hp1) {
     }
 //Blossom Magic Funktion
     fun blossomMagic(damage: IntRange, target: Gegner) {
-        target.hp -= damage.random()
-        blossomMagicUsed = true
-        println("$name1 wirft mit Blüten um sich herum und trifft ${target.name}. Es richtet $damage Schaden an.")
+    val damageAmount = damage.random()
+    target.hp -= damageAmount
+    blossomMagicUsed = true
+        println("$name1 wirft mit Blüten um sich herum und trifft ${target.name}. Es richtet $damageAmount Schaden an.")
     }
 
     //Clairvoyance Funktion
@@ -50,14 +51,16 @@ class Oreade(var name1: String, var hp1: Int) : Held(name1, hp1) {
 
     //Funktion Dark Thorns
     fun darkThorns(damage: IntRange, target: Gegner) {
-        target.hp -= damage.random()
+        val damageAmount = damage.random()
+        target.hp -= damageAmount
         darkThornsUsed = true
         println("$name1 wirft dunkle Dornen in die Runde und trifft ${target.name} und verursacht $damage Schaden.")
     }
 
     //Funktion Tree trunk long throw
     fun treeTrunkLongThrow(damage: IntRange, target: Gegner) {
-        target.hp -= damage.random()
+        val damageAmount = damage.random()
+        target.hp -= damageAmount
         treeTrunkLongThrowUsed = true
         println("$name1 wirft einen Baumstamm und trifft ${target.name}. Es verursacht $damage Schaden.")
     }

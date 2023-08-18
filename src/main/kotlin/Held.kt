@@ -7,7 +7,7 @@ open class Held ( val name: String, var hp: Int) {
 
     //Funktion zur Stärkung des Helden:
     fun power(factor: Double) {
-        println("$name wird um ${factor * 100}% stärker.")
+        factor * 100
     }
 
     // Liste von Aktionen, die der Held ausführen kann
