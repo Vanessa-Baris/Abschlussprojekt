@@ -42,7 +42,7 @@ class Oreade(var name1: String, var hp1: Int) : Held(name1, hp1) {
         val damageAmount = damage
             target.hp -= damageAmount
             clairvoyanceUsed = true
-            println("$name verwendet Hellsicht und verursacht $damage Schaden an ${target.name}.")
+            println("$name verwendet Hellsicht und verursacht $damageAmount Schaden an ${target.name}.")
     }
 
     //Funktion Dark Thorns
@@ -50,7 +50,7 @@ class Oreade(var name1: String, var hp1: Int) : Held(name1, hp1) {
         val damageAmount = damage.random()
         target.hp -= damageAmount
         darkThornsUsed = true
-        println("$name1 wirft dunkle Dornen in die Runde und trifft ${target.name} und verursacht $damage Schaden.")
+        println("$name1 wirft dunkle Dornen in die Runde und trifft ${target.name} und verursacht $damageAmount Schaden.")
     }
 
     //Funktion Tree trunk long throw
