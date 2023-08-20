@@ -12,7 +12,6 @@ open class Held ( val name: String, var hp: Int) {
 
     // Liste von Aktionen, die der Held ausführen kann
     val actions: MutableList<(Gegner) -> Unit> = mutableListOf()
-    var isBlocked: Boolean = false
 
     // Funktion zum Hinzufügen einer Aktion zur Liste
     fun addAction(action: (Gegner) -> Unit) {
@@ -56,7 +55,7 @@ open class Held ( val name: String, var hp: Int) {
 
     //Funktion für zufälligen Angriff, offene und vererbt weiter an Held
     open fun randomAttack(target: Gegner) {
-        val damage = 15
+        val damage = 0
         target.hp -= damage
     }
 
