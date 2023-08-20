@@ -39,14 +39,10 @@ class Oreade(var name1: String, var hp1: Int) : Held(name1, hp1) {
 
     //Clairvoyance Funktion
     fun clairvoyance(damage: Int, target: Gegner) {
-        if (!clairvoyanceUsed) {
-            target.hp -= damage
+        val damageAmount = damage
+            target.hp -= damageAmount
             clairvoyanceUsed = true
             println("$name verwendet Hellsicht und verursacht $damage Schaden an ${target.name}.")
-            isBlocked = true
-        } else {
-            println("$name kann Hellsicht in dieser Runde nicht erneut verwenden.")
-        }
     }
 
     //Funktion Dark Thorns

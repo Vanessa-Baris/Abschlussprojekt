@@ -22,23 +22,8 @@ open class Held ( val name: String, var hp: Int) {
     // Standard-Angriffsfunktion des Helden
     open fun attack(target: Gegner) {
         println("$name greift ${target.name} an.")
-        useAction(target)
     }
 
-    //Clairvoyance blockt die Aktion des nächsten Gegners
-    //Von Chat GPT Anregung geholt und auf meine Bedürfnisse umgewandelt, da ich nicht wusste, wie ich blocken soll:
-    fun useAction(target: Gegner) {
-        if (actions.isNotEmpty()) {
-            val action = actions[0]
-            if (isBlocked) {
-                println("$name ist geschützt und blockt die nächste Aktion.")
-                isBlocked = false
-            } else {
-                action(target)
-            }
-            actions.removeAt(0)
-        }
-    }
 
     //Funktion zum verwenden des Heiltranks:
     open fun useHealing(beutel: Beutel) {
