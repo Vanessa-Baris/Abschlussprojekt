@@ -58,7 +58,7 @@ class Oreade(var name1: String, var hp1: Int) : Held(name1, hp1) {
         val damageAmount = damage.random()
         target.hp -= damageAmount
         treeTrunkLongThrowUsed = true
-        println("$name1 wirft einen Baumstamm und trifft ${target.name}. Es verursacht $damage Schaden.")
+        println("$name1 wirft einen Baumstamm und trifft ${target.name}. Es verursacht $damageAmount Schaden.")
     }
 
     //Überschreiben Elternklasse randomAttack mit Oreade Angriff, wenn man nicht ausgewählt hat in Main
