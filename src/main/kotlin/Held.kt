@@ -25,6 +25,7 @@ open class Held ( val name: String, var hp: Int) {
     }
 
 
+
     //Funktion zum verwenden des Heiltranks:
     open fun useHealing(beutel: Beutel) {
         if (beutel.canUseThisRound() && beutel.canUseHealing()) {
@@ -55,10 +56,8 @@ open class Held ( val name: String, var hp: Int) {
 
     //Funktion für zufälligen Angriff, offene und vererbt weiter an Held
     open fun randomAttack(target: Gegner) {
-        println("$name führt eine normale Attacke aus.")
         val damage = 15
         target.hp -= damage
-        println("$name fügt ${target.name} $damage Schaden zu.")
     }
 
 
