@@ -25,7 +25,7 @@ class Golem (val nameG: String , val hpG: Int): Gegner(nameG , hpG) {
         val damageAmount = damage.random()
         target.hp -= damageAmount
         pushUsed = true
-        println("$nameG stößt ${target.name} weg und verursacht $damage Schaden.")
+        println("$nameG stößt ${target.name} weg und verursacht $damageAmount Schaden.")
     }
 
     //mudBreath Funktion
@@ -33,7 +33,7 @@ class Golem (val nameG: String , val hpG: Int): Gegner(nameG , hpG) {
         val damageAmount = damage.random()
         target.hp -= damageAmount
         mudBreathUsed = true
-        println("$nameG wirft sich den Tarnumhang über und zwickt ${target.name}. Dabei entsteht $damage Schaden.")
+        println("$nameG atmet aus und trifft ${target.name}. Dabei entsteht $damageAmount Schaden.")
     }
 
     //Kick Funktion
@@ -41,7 +41,7 @@ class Golem (val nameG: String , val hpG: Int): Gegner(nameG , hpG) {
         val damageAmount = damage.random()
         target.hp -= damageAmount
         kickUsed = true
-        println("$nameG manipuliert ${target.name} und verursacht $damage Schaden.")
+        println("$nameG manipuliert ${target.name} und verursacht $damageAmount Schaden.")
     }
 
     //Flail Funktion
@@ -49,7 +49,7 @@ class Golem (val nameG: String , val hpG: Int): Gegner(nameG , hpG) {
         val damageAmount = damage.random()
         target.hp -= damageAmount
         flailUsed = true
-        println("$nameG kratzt ${target.name} und verursacht $damage Schaden.")
+        println("$nameG kratzt ${target.name} und verursacht $damageAmount Schaden.")
     }
 
     //Die summon Funktion habe ich eine Inspiration auf Stackoverflow gefunden und auf mich angepasst:

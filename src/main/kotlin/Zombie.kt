@@ -9,8 +9,10 @@ class Zombie(var name3: String, var hp3: Int) : Held(name3, hp3) {
     // Überschreibt die attack-Methode der Elternklasse Held
     override fun attack(target: Gegner) {
         println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-4 ein.")
-        var attackChoice = readLine()?.toIntOrNull()
+        //Diese Zeile ist von Chat GPT:
+        var attackChoice = readln()?.toIntOrNull()
 
+        //Ab hier wieder meins:
         when (attackChoice) {
             1 -> push(30..33, target)
             2 -> hunt(40..50, target)
@@ -31,6 +33,7 @@ class Zombie(var name3: String, var hp3: Int) : Held(name3, hp3) {
     }
 
     //push Funktion
+    //Das!
     fun push(damage: IntRange, target: Gegner) {
         val damageAmount = damage.random()
         target.hp -= damageAmount
@@ -61,6 +64,7 @@ class Zombie(var name3: String, var hp3: Int) : Held(name3, hp3) {
     }
 
     //Überschreiben Elternklasse randomAttack mit Zombie Angriff, wenn man nicht ausgewählt hat in Main
+    //Das!
     override fun randomAttack(target: Gegner) {
         val attackChoice = (1..4).random()
         when (attackChoice) {
@@ -71,6 +75,8 @@ class Zombie(var name3: String, var hp3: Int) : Held(name3, hp3) {
             else -> println("Ungültige Auswahl.")
         }
     }
+    //Zwischenfrage: wo wird randomAttack aufgerufen
+    //Detail was noch sagen: Brief landet nur in Zombie | Vampir | Oreade. Brief geht nur in Held Klasse wenn ich schreibe super.randomAttack
 
     }
 

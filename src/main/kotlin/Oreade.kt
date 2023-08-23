@@ -2,15 +2,17 @@ class Oreade(var name1: String, var hp1: Int) : Held(name1, hp1) {
 
     // Variablen, um den Einsatz der Attacken zu verfolgen
     var blossomMagicUsed = false
-    var clairvoyanceUsed: Boolean = false
+    var clairvoyanceUsed = false
     var darkThornsUsed = false
     var treeTrunkLongThrowUsed = false
 
     // Überschreibt die attack-Methode der Elternklasse Held
     override fun attack(target: Gegner) {
         println("Wähle deinen Angriff aus, tippe dazu eine Zahl von 1-4 ein.")
-        var attackChoice = readLine()?.toIntOrNull()
+        //Diese Zeile ist von Chat GPT:
+        var attackChoice = readln()?.toIntOrNull()
 
+        //Ab hier wieder meins:
         when (attackChoice) {
             1 -> blossomMagic(50..75, target)
             2 -> clairvoyance(0, target)

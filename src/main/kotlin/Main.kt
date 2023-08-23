@@ -39,9 +39,10 @@ fun main() {
 
     println("Such dir nun aus, welchen der drei du bespielen möchtest. Die flinke Echo? Den blutsaugenden Barnabas? Oder doch lieber die vergammelten Olivia?")
 
-//User wählt Character aus mit Vorname:
-    val characterOfTheUser = readLine()
+    //User wählt Character aus mit Vorname:
+    val characterOfTheUser = readln()
 
+    //Von Stackoverflow inspiriert:
     val character = when (characterOfTheUser) {
         "Echo" -> oreade
         "Barnabas" -> vampir
@@ -50,6 +51,7 @@ fun main() {
             println("Bitte wähle nur zwischen Echo, Barnabas und Olivia.")
             return
         }
+        //Ab hier wieder meins:
     } //Den ausgewählten Chara nehme ich raus aus der Held Liste
     helden.remove(character)
 
@@ -66,7 +68,7 @@ fun main() {
         println("♥ ♥ ♥ ♥ ♥ ♥ Runde $round ♥ ♥ ♥ ♥ ♥ ♥")
 
         println("${character.name} kann entweder angreifen oder den Beutel nutzen. Wähle angreifen oder beutel.")
-        val heldAction = readLine()
+        val heldAction = readln()
 
         when (heldAction) {
             "angreifen" -> {
@@ -79,7 +81,7 @@ fun main() {
                 println("Du hast die Möglichkeit, entweder ein Vitamin oder einen Heiltrank zu nutzen. Wähle aus:")
                 println("1. Vitamin")
                 println("2. Heiltrank")
-                val beutelAction = readLine()
+                val beutelAction = readln()
 
                 when (beutelAction) {
                     "Vitamin" -> {
@@ -107,6 +109,7 @@ fun main() {
             }
         }
         // Entscheiden, wer den Angriff ausführt: Golem oder Magier, nur wenn Golem beschworen ist, ansonsten Magier
+        //Mithilfe von Tutor und Stackoverflow:
         if (!magier.isDead()) {
             val randomTarget = if ((0..1).random() == 0) character else helden.firstOrNull { !it.isDead() }
 
@@ -118,6 +121,7 @@ fun main() {
                 }
             }
         }
+        //Ab hier wieder meins:
         // Überprüfen, ob das Spiel vorbei ist:     // Überprüfen, ob sowohl der Golem als auch der Magier besiegt wurden.
         if (golem.isDead() && magier.isDead()) {
             println("Die Helden haben den Golem und den Magier besiegt! Dein Team hat gesiegt. Golden Syntax dankt euch!")
